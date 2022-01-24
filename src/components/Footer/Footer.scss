@@ -1,0 +1,207 @@
+@import '_setting.scss';
+
+.footer-container {
+    width: 100%;
+    padding-top: 70px;
+    background-image: url('../../resouces/assests/footer-bg.jpg');
+
+    .top-footer {
+        display: flex;
+        justify-content: center;
+        font-family: mainFont;
+
+        .top-left-footer, .top-center-footer, .top-right-footer {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+
+            h6 {
+                font-weight: 600;
+                font-size: 1rem;
+                margin: 0 0 20px 0;
+                color: $main-3-color;
+            }
+
+            span {
+                font-size: 0.9rem;
+                line-height: 36px;
+                color: darken($main-3-color, $amount: 30);
+            }
+        }
+
+        .top-left-footer, .top-right-footer {
+            flex-shrink: 0;
+
+            .email-inp {
+                position: relative;
+                margin-top: 20px;
+
+                input {
+                    height: 50px;
+                    width: 310px;
+                    border: none;
+                    outline: none;
+                    background-color: rgba($main-3-color, $alpha: 0.3);
+                    padding-left: 22px;
+                    color: $main-3-color;
+
+                    &::placeholder {
+                        color: $main-3-color;
+                        font-weight: 400;
+                    }
+                }
+
+                svg {
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 26px;
+                    path { stroke: $main-color; }
+                }
+            }
+        }
+
+        .top-center-footer {
+            align-items: center;
+            width: 390px;
+
+            img {
+                margin-bottom: 32px;
+            }
+
+            span {
+                text-align: center;
+            }
+
+            .social-icon-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+
+                & > div {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    background-color: rgba($main-3-color, $alpha: 0.2);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: $main-3-color;
+                    cursor: pointer;
+
+                    &:not(:last-child) { margin-right: 15px; }
+                }
+            }
+        }
+
+        hr {
+            margin: 0 40px;
+            background-color: darken($main-3-color, $amount: 40);
+            opacity: 0.5;
+            height: 200px;
+            border: none;
+            width: 1px !important;
+        }
+    }
+
+    .bottom-footer {
+        background-color: $main-2-color;
+        height: 60px;
+        padding: 0 40px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: mainFont;
+        font-size: 0.9rem;
+        margin-top: 30px;
+
+        span {
+            color: $main-3-color;
+            margin-right: 120px;
+        }
+
+        ul {
+            list-style-type: none;
+            color: darken($main-3-color, $amount: 20);
+            display: flex;
+            align-items: center;
+            width: 320px;
+            justify-content: center;
+            padding-left: 0;
+            flex-shrink: 0;
+
+            hr {
+                width: 15px;
+                height: 1px;
+                border: none;
+                background-color: darken($main-3-color, $amount: 20);
+                transform: rotate(90deg);
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1180px) {
+    .footer-container .top-footer {
+        .top-center-footer {
+            width: 320px;
+        }
+        .top-right-footer .email-inp input { width: 240px; }
+        hr { margin: 0 10px;}
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .footer-container {
+        .top-footer {
+            flex-wrap: wrap;
+            width: 720px;
+            margin: auto;
+            justify-content: space-evenly;
+
+            .top-center-footer { width: 320px;}
+
+            .top-right-footer {
+                width: 100%;
+            }
+
+            hr { display: none; }
+        }
+        .bottom-footer {
+            flex-direction: column;
+            justify-content: center;
+            height: auto;
+            padding: 15px 10px;
+
+            span { margin: 0; line-height: 24px;  text-align: center;}
+
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer-container .top-footer {
+        width: 540px;
+
+        .top-center-footer, .top-left-footer { width: 240px; }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .footer-container {
+        .top-footer {
+            width: 100%;
+            flex-direction: column;
+
+            .top-center-footer, .top-left-footer, .top-right-footer { width: 100%; }
+            .top-center-footer {
+                align-items: flex-start;
+                span { text-align: left; }
+            }
+
+            .top-right-footer .email-inp input { width: 100%;}
+        }
+        .bottom-footer ul { flex-shrink: unset; flex-wrap: wrap; width: auto;}
+    }
+}

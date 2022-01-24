@@ -1,0 +1,71 @@
+@import '_setting.scss';
+
+.navigation-container {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    background-color: $main-color;
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 62px;
+        margin: 0 auto;
+        padding-left: 0;
+        width: 100%;
+        max-width: 500px;
+        position: relative;
+
+        li {
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 62px;
+                width: 100px;
+                text-decoration: none;
+                font-family: mainFont;
+                font-weight: 600;
+                color: $main-3-color;
+            }
+
+            &:hover a {
+                color: $main-2-color;
+            }
+
+            &:nth-child(1).active ~ .current-link {
+                left: 0;
+            }
+
+            &:nth-child(2).active ~ .current-link {
+                left: 100px;
+            }
+
+            &:nth-child(3).active ~ .current-link {
+                left: 200px;
+            }
+
+            &:nth-child(4).active ~ .current-link {
+                left: 300px;
+            }
+
+            &:nth-child(5).active ~ .current-link {
+                left: 400px;
+            }
+        }
+
+        .current-link {
+            width: 100px;
+            height: 5px;
+            background-color: $main-2-color;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: all .2s ease-in-out;
+        }
+    }
+}
