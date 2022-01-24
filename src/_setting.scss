@@ -1,0 +1,10 @@
+//Color
+$main-color: #f08632;
+$main-2-color:#282828;
+$main-3-color: #fff;
+
+//Font
+@font-face {
+    font-family: mainFont;
+    src: local('MyFont'), url('./resouces/fonts/MONTSERRAT_REGULAR.ttf') format('truetype');
+}
