@@ -1,0 +1,105 @@
+@import '_setting.scss';
+
+.product-card {
+    width: 25%;
+    padding: 15px;
+    
+    .cake-image-container {
+        width: 100%;
+        height: 270px;
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cake-type {
+            position: absolute;
+            padding: 6px 10px;
+            z-index: 1;
+            background-color: $main-3-color;
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba($main-2-color, $alpha: 0.15);
+            font-family: mainFont;
+            font-size: 0.9rem;
+            left: 50%;
+            top: 100%;
+            transform: translate(-50%, -50%);
+            transition: all .3s ease-in-out;
+        }
+    }
+
+    .product-info {
+        margin-top: 40px;
+        text-align: center;
+        position: relative;
+
+        span {
+            width: 100%;
+            display: block;
+            font-family: mainFont;
+            font-weight: 600;
+            padding: 10px 0;
+        }
+
+        .cake-price {
+            opacity: 1;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .add-to-card {
+            background-color: $main-3-color;
+            position: absolute;
+            cursor: pointer;
+            bottom: -20px;
+            left: 0;
+            opacity: 0;
+            transition: all .3s ease-in-out;
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 100px;
+                height: 2px;
+                background-color: $main-color;
+                top: calc(100% - 2px);
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    &:hover {
+        .product-info {
+            .add-to-card {
+                bottom: 0;
+                opacity: 1;
+                transition: all .3s ease-in-out;
+            }
+            .cake-price {
+                opacity: 0;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+
+        .cake-type {
+            background-color: $main-color;
+            color: $main-3-color;
+            transition: all .3s ease-in-out;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .product-card { width: 50%; }
+}
+
+@media screen and (max-width: 576px) {
+    .product-card { width: 100%; }
+}

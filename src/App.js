@@ -1,9 +1,8 @@
-import LoginLayout from 'layouts/LoginLayout'
-import MainLayout from 'layouts/MainLayout'
 import { Routes, Route } from 'react-router-dom'
 
 import './App.scss'
-
+import LoginLayout from 'layouts/LoginLayout'
+import MainLayout from 'layouts/MainLayout'
 
 function App() {
   return (
