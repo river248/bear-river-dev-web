@@ -1,0 +1,148 @@
+@import '_setting.scss';
+
+.our-team {
+    padding: 100px 0 70px 0;
+
+    .our-team-container {
+        max-width: 1200px;
+        min-width: 960px;
+        padding: 0 40px;
+        margin: auto;
+
+        .title-our-team {
+            padding: 0 15px;
+            
+            h3 {
+                font-family: mainFont;
+                color: $main-color;
+                letter-spacing: 3px;
+                font-size: 1.3rem;
+                margin-top: 0;
+            }
+
+            h1 {
+                font-style: italic;
+                font-size: 3.2rem;
+                margin-top: 10px;
+                margin-bottom: 30px;
+            }
+        }
+
+        .our-team-image-container {
+            display: flex;
+            flex-wrap: wrap;
+
+            .our-team-item {
+                padding: 0 15px;
+                margin-bottom: 30px;
+                width: 25%;
+                height: 360px;
+                position: relative;
+                overflow: hidden;
+
+                .our-team-info-container {
+
+                    width: 100%;
+                    height: 100%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+    
+                    .our-team-info {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        padding: 30px 0 20px 0;
+                        font-family: mainFont;
+                        position: absolute;
+                        bottom: -150px;
+                        transition: all 0.3s ease-in-out;
+                        left: 15px;
+                        width: calc(100% - 30px);
+                        background-color: rgba($main-3-color, $alpha: 0.8);
+    
+                        span {
+                            line-height: 28px;
+    
+                            &:first-child {
+                                font-weight: 600;
+                            }
+    
+                        }
+                    }
+    
+                    &:hover .our-team-info {
+                        bottom: 0;
+                        transition: all 0.3s ease-in-out;
+                    }
+
+                    .social-contact-info {
+                        display: flex;
+                        justify-content: center;
+
+                        div {
+                            padding: 10px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .our-team {
+        .our-team-container {
+            max-width: 720px;
+            min-width: 540px;
+            .our-team-image-container {
+                .our-team-item {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .our-team {
+        .our-team-container {
+            width: 100%;
+            min-width: unset;
+            max-width: unset;
+            padding: 0;
+            .our-team-image-container {
+                .our-team-item {
+                    width: 100%;
+
+                    .our-team-info-container {
+                        img {
+                            width: 100%;
+                            height: unset;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .our-team {
+        .our-team-container {
+            .title-our-team {
+                h3 {
+                    font-size: 1.2rem;
+                }
+                h1 {
+                    font-size: 1.8rem;
+                }
+            }
+            
+        }
+    }
+}

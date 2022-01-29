@@ -1,0 +1,106 @@
+@import '_setting.scss';
+
+.about-cake-shop {
+    padding: 100px 40px;
+    display: flex;
+    justify-content: center;
+
+    .about-cake-shop-left {
+        padding: 0 15px;
+        width: 585px;
+
+        h3 {
+            font-family: mainFont;
+            color: $main-color;
+            letter-spacing: 6px;
+            margin-top: 0;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-style: italic;
+            margin: 25px 0 40px 0;
+        }
+
+        span {
+            font-family: mainFont;
+
+        }
+    }
+
+    .about-cake-shop-right {
+        width: 585px;
+        padding: 0 15px;
+
+        .about-cake-skills {
+            width: 100%;
+
+            .about-cake-skill-title {
+
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+                font-family: mainFont;
+                font-weight: bold;
+
+                span:first-child { letter-spacing: 2px;}
+            }
+
+            .cake-skill-progress-track {
+                width: 100%;
+                height: 8px;
+                background-color: darken($main-3-color, $amount: 20);
+                margin-bottom: 40px;
+
+                .cake-skill-progress {
+                    height: 100%;
+                    background-color: $main-2-color;
+                    display: block;
+                }
+            }
+
+            &:first-child {
+                .about-cake-skill-title { width: 95%; }
+                .cake-skill-progress-track .cake-skill-progress { width: 95%;}
+            }
+            &:nth-child(2) {
+                .about-cake-skill-title { width: 80%; }
+                .cake-skill-progress-track .cake-skill-progress { width: 80%;}
+            }
+            &:last-child {
+                .about-cake-skill-title { width: 90%; }
+                .cake-skill-progress-track .cake-skill-progress { width: 90%;}
+            }
+        }
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .about-cake-shop {
+        .about-cake-shop-left, .about-cake-shop-right { width: 360px;}
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-cake-shop {
+        flex-direction: column;
+        align-items: center;
+
+        .about-cake-shop-left { margin-bottom: 40px;}
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .about-cake-shop {
+        padding: 100px 0px;
+
+        .about-cake-shop-left, .about-cake-shop-right { width: 100%; };
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-cake-shop {
+        .about-cake-shop-left h1 { font-size: 1.9rem;}
+    }
+}

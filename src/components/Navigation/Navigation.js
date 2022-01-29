@@ -10,7 +10,6 @@ function Navigation() {
 
     const stickyNav = () => {
         const position = 100 - window.pageYOffset
-        console.log('hello')
         
         if( position <= 0)
             navRef.current.style.setProperty('top', '0px')
