@@ -118,7 +118,22 @@
     .testimonial-container {
         .slick-slider {
             max-width: 720px;
-            min-width: 540px;
+            min-width: 510px;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .testimonial-container {
+        .testimonial-item {
+            .testimonial-item-container {
+                .header-client {
+                    flex-direction: column;
+                    justify-content: unset;
+
+                    .header-client-rating { padding: 10px; margin-top: 20px;}
+                }
+            }
         }
     }
 }
@@ -134,13 +149,6 @@
 
             .testimonial-item-container {
                 padding: 25px;
-
-                .header-client {
-                    flex-direction: column;
-                    justify-content: unset;
-
-                    .header-client-rating { padding: 10px; margin-top: 20px;}
-                }
             }
         }
         .slick-slider {
