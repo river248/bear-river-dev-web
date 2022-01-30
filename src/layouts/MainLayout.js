@@ -5,6 +5,7 @@ import HomePage from 'pages/HomePage/HomePage'
 import Navigation from 'components/Navigation/Navigation'
 import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
+import AboutPage from 'pages/AboutPage/AboutPage'
 
 function MainLayout() {
     return (
@@ -16,6 +17,7 @@ function MainLayout() {
                 <Routes>
                     <Route path='' element={<HomePage/>}/>
                     <Route path='home' element={<HomePage/>}/>
+                    <Route path='about' element={<AboutPage/>}/>
                 </Routes>
             </div>
         </main>
