@@ -4,6 +4,9 @@
     width: 100%;
     padding-top: 70px;
     background-image: url('../../resouces/assests/footer-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
 
     .top-footer {
         display: flex;
@@ -152,18 +155,19 @@
     }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 992px) {
     .footer-container {
         .top-footer {
             flex-wrap: wrap;
             width: 720px;
             margin: auto;
-            justify-content: space-evenly;
 
-            .top-center-footer { width: 320px;}
+            .top-center-footer, .top-left-footer { width: 100%;}
 
             .top-right-footer {
                 width: 100%;
+
+                .email-inp input { width: 100%;}
             }
 
             hr { display: none; }
@@ -184,24 +188,16 @@
     .footer-container .top-footer {
         width: 540px;
 
-        .top-center-footer, .top-left-footer { width: 240px; }
+        .top-center-footer {
+            align-items: flex-start;
+
+            span { text-align: left; }
+        }
     }
 }
 
 @media screen and (max-width: 575px) {
     .footer-container {
-        .top-footer {
-            width: 100%;
-            flex-direction: column;
-
-            .top-center-footer, .top-left-footer, .top-right-footer { width: 100%; }
-            .top-center-footer {
-                align-items: flex-start;
-                span { text-align: left; }
-            }
-
-            .top-right-footer .email-inp input { width: 100%;}
-        }
         .bottom-footer ul { flex-shrink: unset; flex-wrap: wrap; width: auto;}
     }
 }

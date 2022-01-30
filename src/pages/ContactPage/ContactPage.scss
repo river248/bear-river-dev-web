@@ -1,0 +1,173 @@
+@import '_setting.scss';
+
+.contact-page-container {
+    max-width: 1220px;
+    min-width: 960px;
+    padding: 100px 40px;
+    margin: auto;
+    // background-color: aqua;
+
+    .address-container {
+        padding: 100px 0 50px 0;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        font-family: mainFont;
+        border-bottom: 1px solid darken($main-3-color, $amount: 20);
+
+        .address-item {
+            width: calc(100% / 3);
+
+            h4 {
+                text-transform: uppercase;
+                line-height: 24px;
+            }
+
+            h5 {
+                font-weight: 100;
+                font-size: 0.9rem;
+            }
+        }
+
+    }
+
+    .contact-info-container {
+        padding-top: 60px;
+        width: 100%;
+        display: flex;
+
+        .contact-info-left {
+            padding-right: 15px;
+            flex-basis: 33.33%;
+            max-width: 33.33%;
+            flex-shrink: 0;
+            
+            h3 {
+                margin-top: 0;
+                font-size: 2.2rem;
+                font-style: italic;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-family: mainFont;
+                line-height: 30px;
+            }
+        }
+
+        .contact-info-right {
+            flex-basis: 66.67%;
+            max-width: 66.67%;
+            padding-left: 15px;
+
+            input {
+                width: 100%;
+                outline: none;
+                margin-bottom: 25px;
+                background-color: darken($main-3-color, $amount: 4);
+                border: 1px solid darken($main-3-color, $amount: 20);
+                font-size: 1rem;
+                padding-left: 20px;
+                height: 140px;
+                position: relative;
+
+                &::placeholder {
+                    position: absolute;
+                    top: 20px;
+                }
+
+            }
+
+            .contact-method {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                font-family: mainFont;
+
+                input {
+                    width: 48%;
+                    height: unset;
+                    padding: 15px 0 15px 20px;
+                    outline: none;
+                    margin-bottom: 25px;
+                    background-color: darken($main-3-color, $amount: 4);
+                    border: 1px solid darken($main-3-color, $amount: 20);
+                    font-size: 1rem;
+
+                    &::placeholder { position: unset; }
+
+                }
+            }
+
+            button {
+                padding: 15px 30px 13px;
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 1rem;
+                color: $main-3-color;
+                background-color: $main-2-color;
+                border: none;
+                outline: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .contact-page-container {
+        max-width: 800px;
+        min-width: 540px;
+
+        .address-container .address-item { width: 50%; }
+        .contact-info-container {
+            flex-direction: column;
+            .contact-info-left { width: 100%; max-width: unset;}
+            .contact-info-right {
+                width: 100%;
+                max-width: unset;
+                padding-left: 0;
+
+                .contact-method {
+                    flex-direction: column;
+                    input { width: 100%; }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact-page-container {
+        max-width: 620px;
+        min-width: 320px;
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact-page-container {
+        max-width: 620px;
+        min-width: 320px;
+
+        .address-container .address-item { width: 100%; }
+
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .contact-page-container {
+        max-width: unset;
+        min-width: unset;
+        padding: 100px 15px;
+        width: 100%;
+
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contact-page-container {
+        .contact-info-container .contact-info-left h3 { font-size: 1.9rem;}
+
+    }
+}
