@@ -198,6 +198,7 @@
 
 @media screen and (max-width: 575px) {
     .footer-container {
+        .top-footer { width: 100%; }
         .bottom-footer ul { flex-shrink: unset; flex-wrap: wrap; width: auto;}
     }
 }

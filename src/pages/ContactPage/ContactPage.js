@@ -1,4 +1,7 @@
 import React from 'react'
+import { FiMapPin } from 'react-icons/fi'
+import { BsHeadphones } from 'react-icons/bs'
+import { AiOutlineMail } from 'react-icons/ai'
 
 import './ContactPage.scss'
 import MapContainer from 'components/MapContainer/MapContainer'
@@ -10,21 +13,21 @@ function ContactPage() {
             <div className='address-container'>
                 <div className='address-item'>
                     <h4>SAN BERNARDINO</h4>
-                    <h5>795 W 5th St, San Bernardino, CA 92410, USA</h5>
-                    <h5>+1 800-786-1000</h5>
-                    <h5>Sweetcake@support.com</h5>
+                    <h5><FiMapPin/> 795 W 5th St, San Bernardino, CA 92410, USA</h5>
+                    <h5><BsHeadphones/>+1 800-786-1000</h5>
+                    <h5><AiOutlineMail/>Sweetcake@support.com</h5>
                 </div>
                 <div className='address-item'>
                     <h4>LOS ANGELES</h4>
-                    <h5>639 S Spring St, Los Angeles, CA 90014, USA</h5>
-                    <h5>+1 213-612-3000</h5>
-                    <h5>Sweetcake@support.com</h5>
+                    <h5><FiMapPin/> 639 S Spring St, Los Angeles, CA 90014, USA</h5>
+                    <h5><BsHeadphones/>+1 213-612-3000</h5>
+                    <h5><AiOutlineMail/>Sweetcake@support.com</h5>
                 </div>
                 <div className='address-item'>
                     <h4>SAN BERNARDINO</h4>
-                    <h5>1000 Lakepoint Dr, Frisco, CO 80443, USA</h5>
-                    <h5>+1 800-786-1000</h5>
-                    <h5>Sweetcake@support.com</h5>
+                    <h5><FiMapPin/> 1000 Lakepoint Dr, Frisco, CO 80443, USA</h5>
+                    <h5><BsHeadphones/>+1 800-786-1000</h5>
+                    <h5><AiOutlineMail/>Sweetcake@support.com</h5>
                 </div>
             </div>
 
