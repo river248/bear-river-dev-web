@@ -28,7 +28,7 @@ function Navigation() {
     return (
         <div className='navigation-container' ref={navRef}>
             <ul>
-                <li className={(location.pathname === '/home' || '/') ? 'active' : ''}>
+                <li className={(location.pathname === '/home' || location.pathname === '/') ? 'active' : ''}>
                     <Link to={'home'}>Home</Link>
                 </li>
                 <li className={location.pathname === '/shop' ? 'active' : ''}>

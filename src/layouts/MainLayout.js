@@ -7,11 +7,15 @@ import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
 import AboutPage from 'pages/AboutPage/AboutPage'
 import ContactPage from 'pages/ContactPage/ContactPage'
+import HeaderMobile from 'components/HeaderMobile/HeaderMobile'
 
 function MainLayout() {
     return (
         <>
-        <header><Header/></header>
+        <header>
+            <Header/>
+            <HeaderMobile/>
+        </header>
         <nav><Navigation/></nav>
         <main>
             <div className='main-layout'>

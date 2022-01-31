@@ -1,0 +1,61 @@
+@import '_setting.scss';
+
+.header-mobile-container {
+    display: none;
+    position: fixed;
+    background-color: $main-3-color;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 20;
+    box-shadow: 4px 0 10px rgba($main-2-color, $alpha: 0.8);
+
+    .header-mobile-item {
+        max-width: 570px;
+        min-width: 320px;
+        height: inherit;
+        padding: 15px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        button {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            background-color: $main-3-color;
+            border: 1px solid $main-2-color;
+            cursor: pointer;
+
+            svg {
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+.background-cover {
+    position: fixed;
+    inset: 0;
+    z-index: 22;
+    background-color: rgba(#000, $alpha: 0.8);
+    opacity: 0;
+    animation: fadeIn .3s ease-in-out forwards;
+}
+
+@media screen and (max-width: 768px) {
+    
+    .header-mobile-container {
+        display: block;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
