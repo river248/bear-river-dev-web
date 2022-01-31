@@ -20,3 +20,7 @@ body {
 .main-layout {
   padding-top: 62px;
 }
+
+@media screen and (max-width: 768px) {
+  .main-layout { padding-top: 100px; }
+}

@@ -57,4 +57,84 @@
             }
         }
     }
+
+    .nav-mobile-container {
+        display: none;
+        height: 65px;
+        width: 100%;
+        padding: 10px;
+        background-color: rgba($main-2-color, $alpha: 0.9);
+        position: relative;
+        font-family: mainFont;
+        transition: all .3s ease-in-out;
+        overflow: hidden;
+        
+        .nav-mobile-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: $main-2-color;
+            color: $main-3-color;
+            width: 110px;
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+
+            span {
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+        }
+
+        ul {
+            margin-top: 60px;
+            padding-left: 25px;
+            margin-bottom: 0;
+            list-style-type: none;
+
+            li {
+                border-radius: 4px;
+                a {
+                    text-decoration: none;
+                    color: $main-3-color;
+                    padding: 10px;
+                    width: 100%;
+                    display: inline-block;
+                }
+
+                &:hover {
+                    background-color: darken($main-3-color, $amount: 10);
+                    a { color: $main-2-color; }
+                }
+
+                &.active-nav-mobile { a {color: $main-color;}}
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header-container {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        bottom: 0;
+        width: 300px;
+        height: unset;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        z-index: 25;
+        background-color: $main-3-color;
+        padding: 50px 20px 30px 30px;
+        transition: all .3s ease-in-out;
+
+        .header-item {
+            margin-bottom: 20px;
+        }
+
+        .nav-mobile-container { display: unset; }
+
+    }
 }
