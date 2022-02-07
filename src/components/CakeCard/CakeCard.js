@@ -3,6 +3,7 @@ import React from 'react'
 import './CakeCard.scss'
 
 function CakeCard({ cakeItem }) {
+
     return (
         <div className='product-card'>
             <div className='cake-image-container'>
@@ -18,4 +19,4 @@ function CakeCard({ cakeItem }) {
     )
 }
 
-export default CakeCard
+export default React.memo(CakeCard)

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import './TitlePage.scss'
 
 function TitlePage({ pageName }) {
+    
     return (
         <div className='title-page-container'>
             <h1>{pageName}</h1>
