@@ -46,6 +46,7 @@
             font-family: mainFont;
             font-weight: 600;
             padding: 10px 0;
+            &:first-child { text-transform: uppercase; }
         }
 
         .cake-price {

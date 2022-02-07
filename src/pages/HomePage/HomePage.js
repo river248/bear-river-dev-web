@@ -17,19 +17,9 @@ import cupcake3 from 'resouces/assests/cupcake3.png'
 import donut from 'resouces/assests/donut.png'
 import cupcake2 from 'resouces/assests/cupcake2.png'
 import MapContainer from 'components/MapContainer/MapContainer'
+import { newCakes } from 'actions/initialData'
 
 function HomePage() {
-
-  const cakes = [
-    {name: 'DOZEN CUPCAKES', price: '$32.00', type: 'Cupcake', image: 'https://preview.colorlib.com/theme/cake/img/shop/product-1.jpg.webp'},
-    {name: 'DOZEN CUPCAKES', price: '$32.00', type: 'Cupcake', image: 'https://preview.colorlib.com/theme/cake/img/shop/product-1.jpg.webp'},
-    {name: 'DOZEN CUPCAKES', price: '$32.00', type: 'Cupcake', image: 'https://preview.colorlib.com/theme/cake/img/shop/product-1.jpg.webp'},
-    {name: 'DOZEN CUPCAKES', price: '$32.00', type: 'Cupcake', image: 'https://preview.colorlib.com/theme/cake/img/shop/product-1.jpg.webp'},
-    {name: 'DOZEN CUPCAKES', price: '$32.00', type: 'Cupcake', image: 'https://preview.colorlib.com/theme/cake/img/shop/product-1.jpg.webp'},
-    {name: 'DOZEN CUPCAKES', price: '$32.00', type: 'Cupcake', image: 'https://preview.colorlib.com/theme/cake/img/shop/product-1.jpg.webp'},
-    {name: 'DOZEN CUPCAKES', price: '$32.00', type: 'Cupcake', image: 'https://preview.colorlib.com/theme/cake/img/shop/product-1.jpg.webp'},
-    {name: 'DOZEN CUPCAKES', price: '$32.00', type: 'Cupcake', image: 'https://preview.colorlib.com/theme/cake/img/shop/product-1.jpg.webp'}
-  ]
 
   const images = [1, 2, 3, 4, 5, 6]
 
@@ -116,8 +106,8 @@ function HomePage() {
 
 
       <section className='home-product-container'>
-        {cakes.map((cake, index) => (
-          <CakeCard cakeItem={cake} key={index}/>
+        {newCakes.map((newCake, index) => (
+          <CakeCard cakeItem={newCake} key={index}/>
         ))}
       </section>
 

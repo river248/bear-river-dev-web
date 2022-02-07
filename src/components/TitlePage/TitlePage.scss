@@ -1,7 +1,7 @@
 @import '_setting.scss';
 
-.about-page-title {
-    max-width: 1170px;
+.title-page-container {
+    max-width: 1250px;
     min-width: 960px;
     padding: 20px 40px 40px 40px;
     display: flex;
@@ -12,14 +12,18 @@
     h1 {
         font-size: 3.5rem;
         font-style: italic;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
-    .about-page-right-title {
+    .right-title-page {
         display: flex;
-        width: 130px;
+        width: 160px;
         font-family: mainFont;
         align-items: center;
         font-size: 1rem;
+        padding-right: 15px;
+        padding-left: 15px;
 
         hr {
             width: 18px;
@@ -39,14 +43,14 @@
 }
 
 @media screen and (max-width: 992px) {
-    .about-page-title {
+    .title-page-container {
         max-width: 720px;
         min-width: 540px;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .about-page-title {
+    .title-page-container {
         max-width: 480px;
         min-width: 320px;
         padding: 20px 0;
@@ -54,7 +58,7 @@
 }
 
 @media screen and (max-width: 587px) {
-    .about-page-title {
+    .title-page-container {
         max-width: unset;
         min-width: unset;
         padding: 20px;
@@ -64,7 +68,7 @@
 }
 
 @media screen and (max-width: 479px) {
-    .about-page-title {
+    .title-page-container {
         h1 { font-size: 3rem;}
     }
 }

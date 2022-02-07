@@ -1,0 +1,61 @@
+@import '_setting.scss';
+
+.pagination-container {
+    max-width: 1250px;
+    min-width: 960px;
+    margin: auto;
+    padding: 15px 40px;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        max-width: 480px;
+        min-width: 320px;
+        display: flex;
+
+        li {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: mainFont;
+            font-weight: 600;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $main-2-color;
+                color: $main-3-color;
+            }
+
+            &.next-page, &.prev-page {
+                svg {
+                    font-size: 26px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .pagination-container {
+        max-width: 720px;
+        min-width: 540px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .pagination-container {
+        max-width: unset;
+        min-width: unset;
+        padding: 0 15px;
+
+        ul {
+            max-width: unset;
+            min-width: unset;
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}

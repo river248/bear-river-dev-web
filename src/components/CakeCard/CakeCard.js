@@ -11,7 +11,7 @@ function CakeCard({ cakeItem }) {
             </div>
             <div className='product-info'>
                 <span className='cake-name'>{cakeItem.name}</span>
-                <span className='cake-price'>{cakeItem.price}</span>
+                <span className='cake-price'>${cakeItem.price}</span>
                 <span className='add-to-card'>Add to card</span>
             </div>
         </div>
