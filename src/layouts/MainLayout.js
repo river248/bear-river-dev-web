@@ -8,6 +8,7 @@ import Footer from 'components/Footer/Footer'
 import AboutPage from 'pages/AboutPage/AboutPage'
 import ContactPage from 'pages/ContactPage/ContactPage'
 import HeaderMobile from 'components/HeaderMobile/HeaderMobile'
+import ShopPage from 'pages/ShopPage/ShopPage'
 
 function MainLayout() {
     return (
@@ -24,6 +25,7 @@ function MainLayout() {
                     <Route path='home' element={<HomePage/>}/>
                     <Route path='about' element={<AboutPage/>}/>
                     <Route path='contact' element={<ContactPage/>}/>
+                    <Route path='shop' element={<ShopPage/>}/>
                 </Routes>
             </div>
         </main>
