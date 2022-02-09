@@ -9,6 +9,7 @@ import AboutPage from 'pages/AboutPage/AboutPage'
 import ContactPage from 'pages/ContactPage/ContactPage'
 import HeaderMobile from 'components/HeaderMobile/HeaderMobile'
 import ShopPage from 'pages/ShopPage/ShopPage'
+import ShoppingCartPage from 'pages/ShoppingCartPage/ShoppingCartPage'
 
 function MainLayout() {
     return (
@@ -26,6 +27,7 @@ function MainLayout() {
                     <Route path='about' element={<AboutPage/>}/>
                     <Route path='contact' element={<ContactPage/>}/>
                     <Route path='shop' element={<ShopPage/>}/>
+                    <Route path='shopping-cart' element={<ShoppingCartPage/>}/>
                 </Routes>
             </div>
         </main>
