@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { FiSearch, FiShoppingBag } from 'react-icons/fi'
 import { BsHeart } from 'react-icons/bs'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
 import { connect } from 'react-redux'
 
@@ -12,6 +12,7 @@ import { toggleNav } from 'actions/globalState'
 function Header({ isVisible, toggleNav }) {
 
     const location = useLocation()
+    const navigate = useNavigate()
     const [isShow, setIsShow] = useState(false)
     const menuRef = useRef(null)
     const headerRef = useRef()
@@ -53,7 +54,7 @@ function Header({ isVisible, toggleNav }) {
                     <li className={(location.pathname === '/home' || location.pathname === '/') ? 'active-nav-mobile' : ''}>
                         <Link to={'home'}>Home</Link>
                     </li>
-                    <li className={location.pathname === '/shop' ? 'active-nav-mobile' : ''}>
+                    <li className={(location.pathname === '/shop' || location.pathname === '/shopping-cart') ? 'active-nav-mobile' : ''}>
                         <Link to={'shop'}>Shop</Link>
                     </li>
                     <li className={location.pathname === '/blog' ? 'active-nav-mobile' : ''}>
@@ -74,7 +75,7 @@ function Header({ isVisible, toggleNav }) {
                     <BsHeart/>
                 </div>
                 <div className='right-header-cart'>
-                    <FiShoppingBag/>
+                    <FiShoppingBag onClick={() => navigate('shopping-cart')}/>
                     <span>Cart: $0.00</span>
                 </div>
             </div>
