@@ -10,6 +10,7 @@ import ContactPage from 'pages/ContactPage/ContactPage'
 import HeaderMobile from 'components/HeaderMobile/HeaderMobile'
 import ShopPage from 'pages/ShopPage/ShopPage'
 import ShoppingCartPage from 'pages/ShoppingCartPage/ShoppingCartPage'
+import ProductDetailPage from 'pages/ProductDetailPage/ProductDetailPage'
 
 function MainLayout() {
     return (
@@ -26,8 +27,12 @@ function MainLayout() {
                     <Route path='home' element={<HomePage/>}/>
                     <Route path='about' element={<AboutPage/>}/>
                     <Route path='contact' element={<ContactPage/>}/>
-                    <Route path='shop' element={<ShopPage/>}/>
+                    <Route path='shop/*'>
+                        <Route path='' element={<ShopPage/>}/>
+                        <Route path='product' element={<ProductDetailPage/>}/>
+                    </Route> 
                     <Route path='shopping-cart' element={<ShoppingCartPage/>}/>
+
                 </Routes>
             </div>
         </main>
