@@ -54,7 +54,10 @@ function Header({ isVisible, toggleNav }) {
                     <li className={(location.pathname === '/home' || location.pathname === '/') ? 'active-nav-mobile' : ''}>
                         <Link to={'home'}>Home</Link>
                     </li>
-                    <li className={(location.pathname === '/shop' || location.pathname === '/shopping-cart') ? 'active-nav-mobile' : ''}>
+                    <li
+                        className={(location.pathname === '/shop' ||
+                        location.pathname === '/shopping-cart' ||
+                        location.pathname === '/shop/product') ? 'active-nav-mobile' : ''}>
                         <Link to={'shop'}>Shop</Link>
                     </li>
                     <li className={location.pathname === '/blog' ? 'active-nav-mobile' : ''}>
