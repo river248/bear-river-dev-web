@@ -1,0 +1,119 @@
+@import '_setting.scss';
+
+.account-page {
+
+    &-wrapper {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        img {
+            position: absolute;
+            inset: 30px;
+            width: calc(100% - 60px);
+            height: calc(100% - 60px);
+            object-fit: cover;
+            box-shadow: 0 6px 14px rgba($main-2-color, $alpha: 0.6);
+            border-radius: 10px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 30px;
+            width: calc(100% - 60px);
+            height: calc(100% - 60px);
+            background: linear-gradient(to right, #00B3D6, #8B20BA);
+            opacity: 0.9;
+            border-radius: 10px
+        }
+    }
+
+    &-container {
+        z-index: 1;
+        width: 310px;
+        border-radius: 8px;
+        background-color: $main-3-color;
+        box-shadow: 0 0 8px rgba($main-2-color, $alpha: 0.2);
+        padding: 30px 30px 60px 30px;
+        font-family: mainFont;
+        position: relative;
+        
+        h1 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        form {
+            input {
+                width: 100%;
+                height: 44px;
+                border-radius: 14px;
+                outline: none;
+                border: none;
+                margin-bottom: 20px;
+                box-shadow: 0 6px 12px rgba($main-2-color, $alpha: 0.2);
+                padding-left: 20px;
+                font-weight: 600;
+
+                &::placeholder {
+                    color: $main-2-color;
+                }
+            }
+
+            button {
+                display: block;
+                padding: 10px 34px;
+                border-radius: 18px;
+                border: none;
+                outline: none;
+                background-color: $main-color;
+                margin: 0 auto;
+                font-weight: 600;
+                color: $main-3-color;
+                box-shadow: 0 4px 12px rgba($main-color, $alpha: 0.7);
+                cursor: pointer;
+            }
+        }
+
+        span {
+            display: block;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        a {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-decoration: none;
+            color: $main-2-color;
+            font-size: 0.9rem;
+
+            &:hover {
+                text-decoration: underline;
+                font-style: italic;
+            }
+        }
+        
+    }
+
+    &-home-link {
+        position: relative !important;
+        text-align: center;
+        top: 5px;
+        display: block;
+    }
+
+    &-social-sign {
+        margin: 20px auto;
+        width: 120px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
