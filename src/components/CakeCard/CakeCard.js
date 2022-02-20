@@ -1,17 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+
+import ImageURL from 'components/ImageURL/ImageURL'
 
 import './CakeCard.scss'
 
 function CakeCard({ cakeItem }) {
 
-    const navigate = useNavigate()
-
     return (
         <div className='product-card'>
             <div className='cake-image-container'>
-                <img src={cakeItem.image} alt='' onClick={() => navigate('/shop/product?id=1')}/>
-                <span className='cake-type'>{cakeItem.type}</span>
+                <ImageURL source={cakeItem.thumbnail} alert={cakeItem.name}/>
+                <span className='cake-type'>{cakeItem.categoryName}</span>
             </div>
             <div className='product-info'>
                 <span className='cake-name'>{cakeItem.name}</span>
