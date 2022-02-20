@@ -1,0 +1,34 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react'
+import { getStorage, ref, getDownloadURL } from 'firebase/storage'
+
+function ImageURL({ source, alert }) {
+
+    const [image, setImage] = useState('')
+
+    useEffect(() => {
+        let isSubcribe = true
+        const storage = getStorage()
+
+        getDownloadURL(ref(storage, `${source}`))
+        .then(url => {
+            if(isSubcribe)
+                setImage(url)
+        })
+        .catch((error) => console.log(error))
+
+        return () => {
+            setImage('')
+            isSubcribe = false
+        }
+        
+    }, [])
+
+    return (
+        <>
+            { image && <img src={image} alt={alert}/> }
+        </>
+    )
+}
+
+export default React.memo(ImageURL)

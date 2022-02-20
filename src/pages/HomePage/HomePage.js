@@ -1,7 +1,9 @@
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react'
 import { FiInstagram } from 'react-icons/fi'
 import Slider from 'react-slick'
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io'
+import { connect } from 'react-redux'
 
 import './HomePage.scss'
 import IntroduceVideo from 'components/IntroduceVideo/IntroduceVideo'
@@ -10,27 +12,17 @@ import AboutCakeShop from 'components/AboutCakeShop/AboutCakeShop'
 import CakeCard from 'components/CakeCard/CakeCard'
 import Testimonial from 'components/Testimonial/Testimonial'
 import moment from 'resouces/assests/moment-1.jpg'
-import cupcake from 'resouces/assests/cupcake.png'
-import pancake from 'resouces/assests/pancake.png'
-import redvelvet from 'resouces/assests/red-velvet.png'
-import cupcake3 from 'resouces/assests/cupcake3.png'
-import donut from 'resouces/assests/donut.png'
-import cupcake2 from 'resouces/assests/cupcake2.png'
 import MapContainer from 'components/MapContainer/MapContainer'
-import { newCakes } from 'actions/initialData'
+import { actFetchAllCategories } from 'actions/categoryAction'
+import ImageURL from 'components/ImageURL/ImageURL'
 
-function HomePage() {
+function HomePage({ categories, getAllCategories }) {
 
   const images = [1, 2, 3, 4, 5, 6]
 
-  const listCakeType = [
-    {name: 'cupcake', image: cupcake},
-    {name: 'butter', image: pancake},
-    {name: 'red velvet', image: redvelvet},
-    {name: 'biscuit', image: cupcake3},
-    {name: 'donut', image: donut},
-    {name: 'cupcake', image: cupcake2}
-  ]
+  useEffect(() => {
+    getAllCategories()
+  }, [])
 
   const settings = {
     dots: false,
@@ -93,11 +85,11 @@ function HomePage() {
       
       <div className='cake-type-slider'>
         <Slider {...settings}>
-          {listCakeType.map((cakeType, index) => (
-            <div className='cake-type-item' key={index}>
+          {categories.map(category => (
+            <div className='cake-type-item' key={category._id}>
               <div className='cake-type-item-container'>
-                <img src={cakeType.image} alt=''/>
-                <h5>{cakeType.name}</h5>
+                <ImageURL source={category.image} alert={category.categoryName}/>
+                <h5>{category.categoryName}</h5>
               </div>
             </div>
           ))}
@@ -106,9 +98,9 @@ function HomePage() {
 
 
       <section className='home-product-container'>
-        {newCakes.map((newCake, index) => (
+        {/* {newCakes.map((newCake, index) => (
           <CakeCard cakeItem={newCake} key={index}/>
-        ))}
+        ))} */}
       </section>
 
       <IntroduceVideo/>
@@ -149,4 +141,19 @@ function SamplePrevArrow(props) {
   )
 }
 
-export default HomePage
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categoryReducer,
+    
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllCategories : () => {
+      dispatch(actFetchAllCategories())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

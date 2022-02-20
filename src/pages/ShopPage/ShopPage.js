@@ -1,23 +1,34 @@
-import React, { useEffect, useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState, useRef } from 'react'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { BiSearch } from 'react-icons/bi'
 import { RiArrowUpSFill } from 'react-icons/ri'
+import { connect } from 'react-redux'
 
 import './ShopPage.scss'
 import TitlePage from 'components/TitlePage/TitlePage'
 import CakeCard from 'components/CakeCard/CakeCard'
-import { cakes } from 'actions/initialData'
 import Pagination from 'components/Pagination/Pagination'
-import { useRef } from 'react'
+import { actFetchAllCategories } from 'actions/categoryAction'
+import { actFetchCategoryCakes } from 'actions/cakeAction'
 
-function ShopPage() {
+function ShopPage(props) {
 
+    const {
+        categories, cakes,
+        getAllCategories, getCategoryCakes
+    } = props
     const [showCategories, setShowCategories] = useState(false)
     const [showSortingMethod, setShowSortingMethod] = useState(false)
     const [currentCategory, setCurrentCategory] = useState('Categories')
     const [currentSorting, setCurrentSorting] = useState('Default sorting')
     const categoryRef = useRef(null)
     const sortingRef = useRef(null)
+
+    useEffect(() => {
+        getAllCategories()
+        getCategoryCakes('62091c52dfc11b3ba1bfd9f9', 1)
+    }, [])
 
     useEffect(() => {
         const checkIfClickedOutside = e => {
@@ -63,10 +74,10 @@ function ShopPage() {
                         <span onClick={() => setShowCategories(!showCategories)}>{currentCategory}</span>
                         { !showCategories ? <IoMdArrowDropdown/> : <RiArrowUpSFill/>}
                         { showCategories && <ul className='dropdown-list'>
-                            <li onClick={() => setCurrentCategory('Categories')}>Categories</li>
-                            <li onClick={() => setCurrentCategory('Red Velvet')}>Red Velvet</li>
-                            <li onClick={() => setCurrentCategory('Cup Cake')}>Cup Cake</li>
-                            <li onClick={() => setCurrentCategory('Biscuit')}>Biscuit</li>
+                        <li onClick={() => setCurrentCategory('Categories')}>Categories</li>
+                            {categories.map(category =>(
+                                <li key={category._id} onClick={() => setCurrentCategory(category.categoryName)}>{category.categoryName}</li>
+                            ))}
                         </ul>}
                     </div>
                     <input placeholder='Search'/>
@@ -88,11 +99,29 @@ function ShopPage() {
             </div>
         </div>
         <div className='products-container'>
-            {cakes.map((cake, index) => <CakeCard key={index} cakeItem={cake}/>)}
+            {cakes.map(cake => <CakeCard key={cake._id} cakeItem={cake}/>)}
         </div>
         <Pagination/>
         </>
     )
 }
 
-export default ShopPage
+const mapStateToProps = (state) => {
+    return {
+        categories: state.categoryReducer,
+        cakes: state.cakeReducer.cakes,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getAllCategories : () => {
+            dispatch(actFetchAllCategories())
+        },
+        getCategoryCakes : (categoryID, page) => {
+            dispatch(actFetchCategoryCakes(categoryID, page))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShopPage)
