@@ -15,13 +15,19 @@ import moment from 'resouces/assests/moment-1.jpg'
 import MapContainer from 'components/MapContainer/MapContainer'
 import { actFetchAllCategories } from 'actions/categoryAction'
 import ImageURL from 'components/ImageURL/ImageURL'
+import { actFetchCakes } from 'actions/cakeAction'
 
-function HomePage({ categories, getAllCategories }) {
+function HomePage(props) {
+
+  const {
+    categories, newCakes,
+    getAllCategories, getNewCakes } = props
 
   const images = [1, 2, 3, 4, 5, 6]
 
   useEffect(() => {
     getAllCategories()
+    getNewCakes(null, null, 1)
   }, [])
 
   const settings = {
@@ -98,9 +104,9 @@ function HomePage({ categories, getAllCategories }) {
 
 
       <section className='home-product-container'>
-        {/* {newCakes.map((newCake, index) => (
-          <CakeCard cakeItem={newCake} key={index}/>
-        ))} */}
+        {newCakes.map(newCake => (
+          <CakeCard cakeItem={newCake} key={newCake._id}/>
+        ))}
       </section>
 
       <IntroduceVideo/>
@@ -144,7 +150,7 @@ function SamplePrevArrow(props) {
 const mapStateToProps = (state) => {
   return {
     categories: state.categoryReducer,
-    
+    newCakes: state.cakeReducer.newCakes
   }
 }
 
@@ -152,6 +158,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getAllCategories : () => {
       dispatch(actFetchAllCategories())
+    },
+    getNewCakes : (sortBy, value, page) => {
+      dispatch(actFetchCakes(sortBy, value, page))
     }
   }
 }
