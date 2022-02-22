@@ -10,19 +10,20 @@ function ImageURL({ source, alert }) {
         let isSubcribe = true
         const storage = getStorage()
 
-        getDownloadURL(ref(storage, `${source}`))
-        .then(url => {
-            if(isSubcribe)
-                setImage(url)
-        })
-        .catch((error) => console.log(error))
+        if(source)
+            getDownloadURL(ref(storage, `${source}`))
+            .then(url => {
+                if(isSubcribe)
+                    setImage(url)
+            })
+            .catch((error) => console.log(error))
 
         return () => {
             setImage('')
             isSubcribe = false
         }
         
-    }, [])
+    }, [source])
 
     return (
         <>

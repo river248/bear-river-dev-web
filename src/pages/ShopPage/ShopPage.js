@@ -10,24 +10,33 @@ import TitlePage from 'components/TitlePage/TitlePage'
 import CakeCard from 'components/CakeCard/CakeCard'
 import Pagination from 'components/Pagination/Pagination'
 import { actFetchAllCategories } from 'actions/categoryAction'
-import { actFetchCategoryCakes } from 'actions/cakeAction'
+import { actFetchCakes, actFetchCategoryCakes } from 'actions/cakeAction'
 
 function ShopPage(props) {
 
     const {
         categories, cakes,
-        getAllCategories, getCategoryCakes
+        getAllCategories, getCategoryCakes, getCakes
     } = props
+
+    const listSorting = [
+        {_id: 1, name: 'A to Z'},
+        {_id: 2, name: 'Z to A'},
+        {_id: 3, name: 'Increase'},
+        {_id: 4, name: 'Decrease'},
+        {_id: 5, name: 'Default sorting'}
+    ]
+
     const [showCategories, setShowCategories] = useState(false)
     const [showSortingMethod, setShowSortingMethod] = useState(false)
-    const [currentCategory, setCurrentCategory] = useState('Categories')
+    const [currentCategory, setCurrentCategory] = useState({_id: '', name: 'Categories'})
     const [currentSorting, setCurrentSorting] = useState('Default sorting')
     const categoryRef = useRef(null)
     const sortingRef = useRef(null)
 
     useEffect(() => {
         getAllCategories()
-        getCategoryCakes('62091c52dfc11b3ba1bfd9f9', 1)
+        getCakes(null, null, 1)
     }, [])
 
     useEffect(() => {
@@ -64,6 +73,51 @@ function ShopPage(props) {
         }
     }, [showSortingMethod])
 
+    const handleFilterCategory = (categoryID, categoryName) => {
+        if (categoryID)
+            getCategoryCakes(categoryID, null, null, 1)
+        else
+            getCakes(null, null, 1)
+        setCurrentCategory({ _id: categoryID, name: categoryName })
+        setCurrentSorting('Default sorting')
+    }
+
+    const handleSorting = (sortingMethod, name) => {
+        switch (sortingMethod) {
+            case 1:
+                if (currentCategory._id)
+                    getCategoryCakes(currentCategory._id, 'name', 1, 1)
+                else
+                    getCakes('name', 1, 1)
+                break
+            case 2:
+                if (currentCategory._id)
+                    getCategoryCakes(currentCategory._id, 'name', -1, 1)
+                else
+                    getCakes('name', -1, 1)
+                break
+            case 3:
+                if (currentCategory._id)
+                    getCategoryCakes(currentCategory._id, 'price', 1, 1)
+                else
+                    getCakes('price', 1, 1)
+                break
+            case 4:
+                if (currentCategory._id)
+                    getCategoryCakes(currentCategory._id, 'price', -1, 1)
+                else
+                    getCakes('price', -1, 1)
+                break
+            default:
+                if (currentCategory._id)
+                    getCategoryCakes(currentCategory._id, null, null, 1)
+                else
+                    getCakes(null, null, 1)
+                break
+        }
+        setCurrentSorting(name)
+    }
+
     return (
         <>
         <TitlePage pageName={'Shop'}/>
@@ -71,12 +125,12 @@ function ShopPage(props) {
             <div className='filter-container'>
                 <form>
                     <div className='current-category' ref={categoryRef}>
-                        <span onClick={() => setShowCategories(!showCategories)}>{currentCategory}</span>
+                        <span onClick={() => setShowCategories(!showCategories)}>{currentCategory.name}</span>
                         { !showCategories ? <IoMdArrowDropdown/> : <RiArrowUpSFill/>}
                         { showCategories && <ul className='dropdown-list'>
-                        <li onClick={() => setCurrentCategory('Categories')}>Categories</li>
+                        <li onClick={() => handleFilterCategory('', 'Categories')}>Categories</li>
                             {categories.map(category =>(
-                                <li key={category._id} onClick={() => setCurrentCategory(category.categoryName)}>{category.categoryName}</li>
+                                <li key={category._id} onClick={() => handleFilterCategory(category._id, category.categoryName)}>{category.categoryName}</li>
                             ))}
                         </ul>}
                     </div>
@@ -88,11 +142,9 @@ function ShopPage(props) {
                 <div className='current-option-sorting' ref={sortingRef}>
                     <span onClick={() => setShowSortingMethod(!showSortingMethod)}>{currentSorting}</span>
                     { showSortingMethod && <ul className='dropdown-list'>
-                            <li onClick={() => setCurrentSorting('Default sorting')}>Default sorting</li>
-                            <li onClick={() => setCurrentSorting('A to Z')}>A to Z</li>
-                            <li onClick={() => setCurrentSorting('Z to A')}>Z to A</li>
-                            <li onClick={() => setCurrentSorting('Increase')}>Increase</li>
-                            <li onClick={() => setCurrentSorting('Decrease')}>Decrease</li>
+                            { listSorting.map (item => (<li key={item._id} onClick={() => handleSorting(item._id, item.name)}>
+                                {item.name}
+                            </li>))}
                         </ul>}
                     { !showSortingMethod ? <IoMdArrowDropdown/> : <RiArrowUpSFill/>}
                 </div>
@@ -118,8 +170,11 @@ const mapDispatchToProps = (dispatch) => {
         getAllCategories : () => {
             dispatch(actFetchAllCategories())
         },
-        getCategoryCakes : (categoryID, page) => {
-            dispatch(actFetchCategoryCakes(categoryID, page))
+        getCategoryCakes : (categoryID, sortBy, value, page) => {
+            dispatch(actFetchCategoryCakes(categoryID, sortBy, value, page))
+        },
+        getCakes : (sortBy, value, page) => {
+            dispatch(actFetchCakes(sortBy, value, page))
         }
     }
 }
