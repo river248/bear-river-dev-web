@@ -7,9 +7,9 @@ import { connect } from 'react-redux'
 
 import './Header.scss'
 import logo from 'resouces/assests/header-logo.png'
-import { toggleNav } from 'actions/globalState'
+import { formatPrice } from 'utils/formatPrice'
 
-function Header({ isVisible, toggleNav }) {
+function Header({ isVisible, shoppingCart }) {
 
     const location = useLocation()
     const navigate = useNavigate()
@@ -27,6 +27,8 @@ function Header({ isVisible, toggleNav }) {
             menuRef.current.style.setProperty('height', '276px')
         }
     }
+
+    const total = shoppingCart.reduce((result, item) => result + item.product.price*item.quantity, 0)
 
     useEffect(() => {
         if (isVisible)
@@ -79,7 +81,7 @@ function Header({ isVisible, toggleNav }) {
                 </div>
                 <div className='right-header-cart'>
                     <FiShoppingBag onClick={() => navigate('shopping-cart')}/>
-                    <span>Cart: $0.00</span>
+                    <span>Cart: ${formatPrice(formatPrice(Math.round(total*100)/100))}</span>
                 </div>
             </div>
         </div>
@@ -88,16 +90,9 @@ function Header({ isVisible, toggleNav }) {
 
 const mapStateToProps = (state) => {
     return {
-        isVisible: state.globalState.isVisible
+        isVisible: state.globalState.isVisible,
+        shoppingCart: state.cartReducer
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        toggleNav : (state) => {
-            dispatch(toggleNav(state))
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, null)(Header)
