@@ -1,5 +1,5 @@
 export const formatPrice = (price) => {
-    const r = (price*100)%100
+    const r = Math.round(price*100)%100
     const q = price - (r/100)
     if (r === 0)
         if (q > 9) return `${q}.00`

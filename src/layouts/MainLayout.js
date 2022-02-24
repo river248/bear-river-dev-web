@@ -11,6 +11,7 @@ import HeaderMobile from 'components/HeaderMobile/HeaderMobile'
 import ShopPage from 'pages/ShopPage/ShopPage'
 import ShoppingCartPage from 'pages/ShoppingCartPage/ShoppingCartPage'
 import ProductDetailPage from 'pages/ProductDetailPage/ProductDetailPage'
+import Message from 'components/Message/Message'
 
 function MainLayout() {
     return (
@@ -34,6 +35,7 @@ function MainLayout() {
                     <Route path='shopping-cart' element={<ShoppingCartPage/>}/>
 
                 </Routes>
+                <Message/>
             </div>
         </main>
         <footer><Footer/></footer>
