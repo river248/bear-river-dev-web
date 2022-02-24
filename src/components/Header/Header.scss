@@ -49,6 +49,7 @@
         .right-header-cart {
             display: flex;
             align-items: center;
+            position: relative;
 
             svg { cursor: pointer; }
             
@@ -56,6 +57,19 @@
                 margin-left: 10px;
                 font-family: mainFont;
                 font-weight: bold;
+
+                &.quantity-product-in-cart {
+                    position: absolute;
+                    left: 13px;
+                    top: -6px;
+                    width: 20px;
+                    height: 20px;
+                    color: $main-3-color;
+                    background-color: red;
+                    margin-left: 0;
+                    border-radius: 50%;
+                    text-align: center;
+                }
             }
         }
     }

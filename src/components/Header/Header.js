@@ -81,6 +81,7 @@ function Header({ isVisible, shoppingCart }) {
                 </div>
                 <div className='right-header-cart'>
                     <FiShoppingBag onClick={() => navigate('shopping-cart')}/>
+                    { (shoppingCart.length) > 0 && <span className='quantity-product-in-cart'>{shoppingCart.length}</span>}
                     <span>Cart: ${formatPrice(formatPrice(Math.round(total*100)/100))}</span>
                 </div>
             </div>

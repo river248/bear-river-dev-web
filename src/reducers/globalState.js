@@ -1,13 +1,22 @@
-import { IS_SHOW } from 'utils/constants'
+import { IS_SHOW, MESSAGE } from 'utils/constants'
 
 const initialState = {
-    isVisible: false
+    isVisible: false,
+    message: { type: false, content: '', isVisible: false} 
 }
 
 const globalState = (state = initialState, action) => {
-    if (action.type === IS_SHOW)
-        return { isVisible: action.payload }
-    return { ...state }
+    switch (action.type) {
+        case IS_SHOW:
+            return { ...state, isVisible: action.payload }
+        case MESSAGE:
+            return {
+                ...state,
+                message: {...action.payload}
+            }
+        default:
+            return {...state}
+    }
 }
 
 export default globalState
