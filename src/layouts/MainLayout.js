@@ -12,6 +12,8 @@ import ShopPage from 'pages/ShopPage/ShopPage'
 import ShoppingCartPage from 'pages/ShoppingCartPage/ShoppingCartPage'
 import ProductDetailPage from 'pages/ProductDetailPage/ProductDetailPage'
 import Message from 'components/Message/Message'
+import ScrollToTop from 'components/ScrollToTop/ScrollToTop'
+import ToTopButton from 'components/ToTopButton/ToTopButton'
 
 function MainLayout() {
     return (
@@ -36,9 +38,11 @@ function MainLayout() {
 
                 </Routes>
                 <Message/>
+                <ToTopButton/>
             </div>
         </main>
         <footer><Footer/></footer>
+        <ScrollToTop/>
       </>
     )
 }
