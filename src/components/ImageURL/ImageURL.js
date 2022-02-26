@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import { getStorage, ref, getDownloadURL } from 'firebase/storage'
 
+import './ImageURL.scss'
+
 function ImageURL({ source, alert }) {
 
     const [image, setImage] = useState('')
@@ -27,7 +29,7 @@ function ImageURL({ source, alert }) {
 
     return (
         <>
-            { image && <img src={image} alt={alert}/> }
+            { image ? <img src={image} alt={alert}/> : <div className='box__background--image'/>}
         </>
     )
 }

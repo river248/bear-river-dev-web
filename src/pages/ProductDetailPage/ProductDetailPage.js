@@ -10,11 +10,13 @@ import useQuery from 'utils/useQuery'
 import { actFetchCategoryCakes, actFetchDetailedCake } from 'actions/cakeAction'
 import ImageURL from 'components/ImageURL/ImageURL'
 import { formatPrice } from 'utils/formatPrice'
+import { fake8Products } from 'utils/fakeProduct'
+import LoadingCard from 'components/LoadingCard/LoadingCard'
 
 function ProductDetailPage(props) {
 
     const {
-        cake, relatedCakes,
+        cake, relatedCakes, loading,
         getDetailedCake, getCategoryCakes
     } = props
     let query = useQuery()
@@ -54,9 +56,8 @@ function ProductDetailPage(props) {
         <div className='related-product-wrapper'>
             <h1>Related Products</h1>
             <div className='related-product-container'>
-                {relatedCakes.map(relatedCake => (
-                    <CakeCard cakeItem={relatedCake} key={relatedCake._id}/>
-                ))}
+            { loading ? (fake8Products.map(item => <LoadingCard key={item}/>)) :
+                (relatedCakes.map(relatedCake => <CakeCard key={relatedCake._id} cakeItem={relatedCake}/>))}
             </div>
         </div>
         </>
@@ -66,7 +67,8 @@ function ProductDetailPage(props) {
 const mapStateToProps = (state) => {
     return {
         cake: state.cakeReducer.cake,
-        relatedCakes: state.cakeReducer.relatedCakes
+        relatedCakes: state.cakeReducer.relatedCakes,
+        loading: state.globalState.loading
     }
   }
   

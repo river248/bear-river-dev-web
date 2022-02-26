@@ -5,11 +5,14 @@ import {
 } from 'utils/constants'
 
 import { fetchCakes, fetchCategoryCakes, fetchDetailedCake } from './ApiCall/cakeAPI'
+import { actLoading } from './globalState'
 
 export const actFetchCakes = (sortBy, value, page) => {
     return (dispatch) => {
+        dispatch(actLoading(true))
         return fetchCakes(sortBy, value, page).then(res => {
             dispatch(getCakes(res.data))
+            dispatch(actLoading(false))
         })
     }
 }
@@ -23,8 +26,10 @@ export const getCakes = (data) => {
 
 export const actFetchCategoryCakes = (categoryID, sortBy, value, page) => {
     return (dispatch) => {
+        dispatch(actLoading(true))
         return fetchCategoryCakes(categoryID, sortBy, value, page).then(res => {
             dispatch(getCategoryCakes(res.data))
+            dispatch(actLoading(false))
         })
     }
 }

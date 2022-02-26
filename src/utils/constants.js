@@ -3,6 +3,7 @@ export const API_ROOT = 'https://cake-riverdev-web.herokuapp.com'
 
 export const IS_SHOW = 'IS_SHOW'
 export const MESSAGE = 'MESSAGE'
+export const LOADING = 'LOADING'
 
 export const GET_ALL_CATEGORIES = 'GET_ALL-CATEGORIES'
 
