@@ -9,3 +9,9 @@ $main-4-color: #FDF3EA;
     font-family: mainFont;
     src: local('MyFont'), url('./resouces/fonts/MONTSERRAT_REGULAR.ttf') format('truetype');
 }
+
+//Animation
+@keyframes skeleton-loading {
+    0% { background-color: rgba($main-2-color, $alpha: 0.3);}
+    100% { background-color: rgba($main-2-color, $alpha: 0.1);}
+}

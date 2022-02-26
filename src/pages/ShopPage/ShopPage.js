@@ -11,11 +11,13 @@ import CakeCard from 'components/CakeCard/CakeCard'
 import Pagination from 'components/Pagination/Pagination'
 import { actFetchAllCategories } from 'actions/categoryAction'
 import { actFetchCakes, actFetchCategoryCakes } from 'actions/cakeAction'
+import LoadingCard from 'components/LoadingCard/LoadingCard'
+import { fake12Products } from 'utils/fakeProduct'
 
 function ShopPage(props) {
 
     const {
-        categories, cakes,
+        categories, cakes, loading,
         getAllCategories, getCategoryCakes, getCakes
     } = props
 
@@ -151,7 +153,8 @@ function ShopPage(props) {
             </div>
         </div>
         <div className='products-container'>
-            {cakes.map(cake => <CakeCard key={cake._id} cakeItem={cake}/>)}
+            { loading ? (fake12Products.map(item => <LoadingCard key={item}/>)) :
+            (cakes.map(cake => <CakeCard key={cake._id} cakeItem={cake}/>))}
         </div>
         <Pagination/>
         </>
@@ -162,6 +165,7 @@ const mapStateToProps = (state) => {
     return {
         categories: state.categoryReducer,
         cakes: state.cakeReducer.cakes,
+        loading: state.globalState.loading
     }
 }
 

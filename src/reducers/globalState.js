@@ -1,8 +1,9 @@
-import { IS_SHOW, MESSAGE } from 'utils/constants'
+import { IS_SHOW, MESSAGE, LOADING } from 'utils/constants'
 
 const initialState = {
     isVisible: false,
-    message: { type: false, content: '', isVisible: false} 
+    message: { type: false, content: '', isVisible: false},
+    loading: false
 }
 
 const globalState = (state = initialState, action) => {
@@ -13,6 +14,11 @@ const globalState = (state = initialState, action) => {
             return {
                 ...state,
                 message: {...action.payload}
+            }
+        case LOADING:
+            return {
+                ...state,
+                loading: action.payload
             }
         default:
             return {...state}

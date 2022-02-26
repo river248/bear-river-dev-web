@@ -16,11 +16,13 @@ import MapContainer from 'components/MapContainer/MapContainer'
 import { actFetchAllCategories } from 'actions/categoryAction'
 import ImageURL from 'components/ImageURL/ImageURL'
 import { actFetchCakes } from 'actions/cakeAction'
+import { fake8Products } from 'utils/fakeProduct'
+import LoadingCard from 'components/LoadingCard/LoadingCard'
 
 function HomePage(props) {
 
   const {
-    categories, newCakes,
+    categories, newCakes, loading,
     getAllCategories, getNewCakes } = props
 
   const images = [1, 2, 3, 4, 5, 6]
@@ -104,9 +106,8 @@ function HomePage(props) {
 
 
       <section className='home-product-container'>
-        {newCakes.map(newCake => (
-          <CakeCard cakeItem={newCake} key={newCake._id}/>
-        ))}
+      { loading ? (fake8Products.map(item => <LoadingCard key={item}/>)) :
+        (newCakes.map(newCake => <CakeCard key={newCake._id} cakeItem={newCake}/>))}
       </section>
 
       <IntroduceVideo/>
@@ -150,7 +151,8 @@ function SamplePrevArrow(props) {
 const mapStateToProps = (state) => {
   return {
     categories: state.categoryReducer,
-    newCakes: state.cakeReducer.newCakes
+    newCakes: state.cakeReducer.newCakes,
+    loading: state.globalState.loading
   }
 }
 
