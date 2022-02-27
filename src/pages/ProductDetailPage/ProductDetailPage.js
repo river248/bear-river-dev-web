@@ -55,7 +55,7 @@ function ProductDetailPage(props) {
         </div>
         <div className='related-product-wrapper'>
             <h1>Related Products</h1>
-            <div className='related-product-container'>
+            <div className='related-product-container slider-container-moblie'>
             { loading ? (fake8Products.map(item => <LoadingCard key={item}/>)) :
                 (relatedCakes.map(relatedCake => <CakeCard key={relatedCake._id} cakeItem={relatedCake}/>))}
             </div>

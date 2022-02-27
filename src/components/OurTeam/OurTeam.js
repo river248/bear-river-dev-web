@@ -21,7 +21,7 @@ function OurTeam() {
                     <h3>OUR TEAM</h3>
                     <h1>Sweet Barker</h1>
                 </div>
-                <div className='our-team-image-container'>
+                <div className='our-team-image-container slider-container-moblie'>
                     { employees.map((employee, index) => (
                     <div className='our-team-item' key={index}>
                         <div className='our-team-info-container'>

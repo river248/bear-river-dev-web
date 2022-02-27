@@ -105,7 +105,7 @@ function HomePage(props) {
       </div>
 
 
-      <section className='home-product-container'>
+      <section className='home-product-container slider-container-moblie'>
       { loading ? (fake8Products.map(item => <LoadingCard key={item}/>)) :
         (newCakes.map(newCake => <CakeCard key={newCake._id} cakeItem={newCake}/>))}
       </section>

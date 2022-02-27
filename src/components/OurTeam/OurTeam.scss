@@ -118,6 +118,7 @@
             .our-team-image-container {
                 .our-team-item {
                     width: 100%;
+                    scroll-snap-align: start;
 
                     .our-team-info-container {
                         img {
