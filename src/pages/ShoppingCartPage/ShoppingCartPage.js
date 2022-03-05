@@ -1,18 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 
 import './ShoppingCartPage.scss'
 import TitlePage from 'components/TitlePage/TitlePage'
-import { formatPrice } from 'utils/formatPrice'
 import ShoppingCart from 'components/ShoppingCart/ShoppingCart'
+import TotalPrice from 'components/TotalPrice/TotalPrice'
 
-function ShoppingCartPage({shoppingCart}) {
+function ShoppingCartPage() {
 
-    const total = shoppingCart.reduce((result, item) => {
-            return result + item.product.price*item.quantity
-        }, 0)
+    const navigate = useNavigate()
 
     return (
         <>
@@ -21,7 +18,7 @@ function ShoppingCartPage({shoppingCart}) {
                 <div className='left-shopping-cart-container'>
                     <ShoppingCart/>
                     <div className='bottom-left-shopping-cart-container'>
-                        <Link to={'shop'}>continue shopping</Link>
+                        <Link to={'/shop'}>continue shopping</Link>
                         {/* <span>update cart</span> */}
                     </div>
                 </div>
@@ -33,11 +30,8 @@ function ShoppingCartPage({shoppingCart}) {
                     </div>
                     <div className='cart-total-container'>
                         <h6>cart total</h6>
-                        <ul>
-                            <li>Subtotal <span>$ {formatPrice(Math.round(total*100)/100)}</span></li>
-                            <li>Total <span>$ {formatPrice(Math.round(total*100)/100)}</span></li>
-                        </ul>
-                        <button>proceed to checkout</button>
+                        <TotalPrice/>
+                        <button onClick={() => navigate('/checkout')}>proceed to checkout</button>
                     </div>
                 </div>
             </div>
@@ -45,10 +39,4 @@ function ShoppingCartPage({shoppingCart}) {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        shoppingCart: state.cartReducer
-    }
-}
-
-export default connect(mapStateToProps, null)(ShoppingCartPage)
+export default ShoppingCartPage
