@@ -34,6 +34,7 @@ function Navigation() {
                 <li
                     className={(location.pathname === '/shop' ||
                     location.pathname === '/shopping-cart' ||
+                    location.pathname === '/checkout' ||
                     location.pathname === '/shop/product') ? 'active' : ''}>
                     <Link to={'shop'}>Shop</Link>
                 </li>

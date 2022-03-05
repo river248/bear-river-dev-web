@@ -14,6 +14,7 @@ import ProductDetailPage from 'pages/ProductDetailPage/ProductDetailPage'
 import Message from 'components/Message/Message'
 import ScrollToTop from 'components/ScrollToTop/ScrollToTop'
 import ToTopButton from 'components/ToTopButton/ToTopButton'
+import CheckoutPage from 'pages/CheckoutPage/CheckoutPage'
 
 function MainLayout() {
     return (
@@ -35,7 +36,7 @@ function MainLayout() {
                         <Route path='product' element={<ProductDetailPage/>}/>
                     </Route> 
                     <Route path='shopping-cart' element={<ShoppingCartPage/>}/>
-
+                    <Route path='checkout' element={<CheckoutPage/>}/>
                 </Routes>
                 <Message/>
                 <ToTopButton/>
