@@ -7,14 +7,13 @@
     right: 10px;
     padding: 5px 20px 5px 10px;
     border-radius: 20px;
-    box-shadow: 2px 2px 4px rgba($main-2-color, $alpha: 0.4);
-    background-color: $main-3-color;
-    color: $main-color;
-    border: 2px solid $main-color;
+    box-shadow: 2px 2px 4px rgba($main2Color, $alpha: 0.4);
+    background-color: $main3Color;
+    color: $mainColor;
+    border: 2px solid $mainColor;
     font-family: mainFont;
     animation: slideRightToLeft 0.2s ease-in-out;
-    display: flex;
-    align-items: center;
+    @include centerBox('align');
 
     svg {
         margin-right: 10px;

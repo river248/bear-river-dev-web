@@ -2,11 +2,11 @@
 
 .testimonial-container {
     padding: 90px 40px 100px 40px;
-    background-color: $main-4-color;
+    background-color: $main4Color;
 
     h3 {
         margin-top: 0;
-        color: $main-color;
+        color: $mainColor;
         letter-spacing: 3px;
         font-size: 1.2rem;
         font-family: mainFont;
@@ -27,7 +27,7 @@
         min-width: 330px;
         .testimonial-item-container {
             padding: 40px;
-            background-color: $main-3-color;
+            background-color: $main3Color;
 
             .header-client {
                 display: flex;
@@ -35,8 +35,7 @@
                 margin-bottom: 25px;
 
                 .header-client-info {
-                    display: flex;
-                    align-items: center;
+                    @include centerBox('align');
                     flex-shrink: 0;
                     
                     .client-image {
@@ -74,8 +73,7 @@
                 }
 
                 .header-client-rating {
-                    display: flex;
-                    align-items: center;
+                    @include centerBox('align');
                     color: #F0C656;
                 }
             }

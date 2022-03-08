@@ -1,8 +1,11 @@
 //Color
-$main-color: #f08632;
-$main-2-color:#282828;
-$main-3-color: #fff;
-$main-4-color: #FDF3EA;
+$mainColor: #f08632;
+$main2Color:#282828;
+$main3Color: #fff;
+$main4Color: #FDF3EA;
+$darken10Main3Color: darken($main3Color, $amount: 10);
+$darken20Main3Color: darken($main3Color, $amount: 20);
+$darken30Main3Color: darken($main3Color, $amount: 30);
 
 //Font
 @font-face {
@@ -12,8 +15,8 @@ $main-4-color: #FDF3EA;
 
 //Animation
 @keyframes skeleton-loading {
-    0% { background-color: rgba($main-2-color, $alpha: 0.3);}
-    100% { background-color: rgba($main-2-color, $alpha: 0.1);}
+    0% { background-color: rgba($main2Color, $alpha: 0.3);}
+    100% { background-color: rgba($main2Color, $alpha: 0.1);}
 }
 
 //Responsive
@@ -29,5 +32,30 @@ $main-4-color: #FDF3EA;
         scrollbar-width: none !important;
 
         &::-webkit-scrollbar { display: none; }
+    }
+}
+
+// mixin
+@mixin container {
+    max-width: 1250px;
+    min-width: 960px;
+    margin: auto;
+    padding: 0 40px;
+}
+
+@mixin centerBox($type: 'both') {
+    display: flex;
+
+    @if $type == 'justify' {
+        justify-content: center;
+    }
+
+    @if $type == 'align' {
+        align-items: center;
+    }
+
+    @if $type == 'both' {
+        justify-content: center;
+        align-items: center;
     }
 }

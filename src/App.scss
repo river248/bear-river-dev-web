@@ -8,11 +8,11 @@ body {
 
   &::-webkit-scrollbar { width: 8px; }
   &::-webkit-scrollbar-thumb {
-    background-color: $main-color;
+    background-color: $mainColor;
     border-radius: 4px;
   }
   &::-webkit-scrollbar-track {
-    background-color: darken($main-3-color, $amount: 20);
+    background-color: $darken20Main3Color;
     border-radius: 4px;
   }
 }

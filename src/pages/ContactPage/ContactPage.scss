@@ -1,10 +1,9 @@
 @import '_setting.scss';
 
 .contact-page-container {
-    max-width: 1220px;
-    min-width: 960px;
-    padding: 100px 40px;
-    margin: auto;
+    @include container;
+    padding-top: 100px;
+    padding-bottom: 100px;
     // background-color: aqua;
 
     .address-container {
@@ -13,7 +12,7 @@
         flex-wrap: wrap;
         width: 100%;
         font-family: mainFont;
-        border-bottom: 1px solid darken($main-3-color, $amount: 20);
+        border-bottom: 1px solid $darken20Main3Color;
 
         .address-item {
             width: calc(100% / 3);
@@ -24,8 +23,7 @@
             }
 
             h5 {
-                display: flex;
-                align-items: center;
+                @include centerBox('align');
                 font-weight: 100;
                 font-size: 0.9rem;
 
@@ -70,8 +68,8 @@
                 width: 100%;
                 outline: none;
                 margin-bottom: 25px;
-                background-color: darken($main-3-color, $amount: 4);
-                border: 1px solid darken($main-3-color, $amount: 20);
+                background-color: darken($main3Color, $amount: 4);
+                border: 1px solid $darken20Main3Color;
                 font-size: 1rem;
                 padding-left: 20px;
                 height: 140px;
@@ -96,8 +94,8 @@
                     padding: 15px 0 15px 20px;
                     outline: none;
                     margin-bottom: 25px;
-                    background-color: darken($main-3-color, $amount: 4);
-                    border: 1px solid darken($main-3-color, $amount: 20);
+                    background-color: darken($main3Color, $amount: 4);
+                    border: 1px solid $darken20Main3Color;
                     font-size: 1rem;
 
                     &::placeholder { position: unset; }
@@ -110,8 +108,8 @@
                 text-transform: uppercase;
                 font-weight: 600;
                 font-size: 1rem;
-                color: $main-3-color;
-                background-color: $main-2-color;
+                color: $main3Color;
+                background-color: $main2Color;
                 border: none;
                 outline: none;
                 cursor: pointer;

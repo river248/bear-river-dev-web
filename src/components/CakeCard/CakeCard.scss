@@ -23,9 +23,9 @@
             position: absolute;
             padding: 6px 10px;
             z-index: 1;
-            background-color: $main-3-color;
+            background-color: $main3Color;
             border-radius: 2px;
-            box-shadow: 0 2px 4px rgba($main-2-color, $alpha: 0.15);
+            box-shadow: 0 2px 4px rgba($main2Color, $alpha: 0.15);
             font-family: mainFont;
             font-size: 0.9rem;
             left: 50%;
@@ -55,7 +55,7 @@
         }
 
         .add-to-card {
-            background-color: $main-3-color;
+            background-color: $main3Color;
             position: absolute;
             cursor: pointer;
             bottom: -20px;
@@ -68,7 +68,7 @@
                 position: absolute;
                 width: 100px;
                 height: 2px;
-                background-color: $main-color;
+                background-color: $mainColor;
                 top: calc(100% - 2px);
                 left: 50%;
                 transform: translateX(-50%);
@@ -90,8 +90,8 @@
         }
 
         .cake-type {
-            background-color: $main-color;
-            color: $main-3-color;
+            background-color: $mainColor;
+            color: $main3Color;
             transition: all .3s ease-in-out;
         }
     }

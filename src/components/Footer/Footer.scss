@@ -9,8 +9,7 @@
     background-position: top center;
 
     .top-footer {
-        display: flex;
-        justify-content: center;
+        @include centerBox('justify');
         font-family: mainFont;
 
         .top-left-footer, .top-center-footer, .top-right-footer {
@@ -22,13 +21,13 @@
                 font-weight: 600;
                 font-size: 1rem;
                 margin: 0 0 20px 0;
-                color: $main-3-color;
+                color: $main3Color;
             }
 
             span {
                 font-size: 0.9rem;
                 line-height: 36px;
-                color: darken($main-3-color, $amount: 30);
+                color: $darken30Main3Color;
             }
         }
 
@@ -44,12 +43,12 @@
                     width: 310px;
                     border: none;
                     outline: none;
-                    background-color: rgba($main-3-color, $alpha: 0.3);
+                    background-color: rgba($main3Color, $alpha: 0.3);
                     padding-left: 22px;
-                    color: $main-3-color;
+                    color: $main3Color;
 
                     &::placeholder {
-                        color: $main-3-color;
+                        color: $main3Color;
                         font-weight: 400;
                     }
                 }
@@ -60,7 +59,7 @@
                     top: 50%;
                     transform: translateY(-50%);
                     font-size: 26px;
-                    path { stroke: $main-color; }
+                    path { stroke: $mainColor; }
                 }
             }
         }
@@ -78,19 +77,16 @@
             }
 
             .social-icon-container {
-                display: flex;
-                justify-content: center;
+                @include centerBox('justify');
                 margin-top: 20px;
 
                 & > div {
                     width: 45px;
                     height: 45px;
                     border-radius: 50%;
-                    background-color: rgba($main-3-color, $alpha: 0.2);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    color: $main-3-color;
+                    background-color: rgba($main3Color, $alpha: 0.2);
+                    @include centerBox();
+                    color: $main3Color;
                     cursor: pointer;
 
                     &:not(:last-child) { margin-right: 15px; }
@@ -100,7 +96,7 @@
 
         hr {
             margin: 0 40px;
-            background-color: darken($main-3-color, $amount: 40);
+            background-color: darken($main3Color, $amount: 40);
             opacity: 0.5;
             height: 200px;
             border: none;
@@ -109,28 +105,25 @@
     }
 
     .bottom-footer {
-        background-color: $main-2-color;
+        background-color: $main2Color;
         height: 60px;
         padding: 0 40px;
-        display: flex;
+        @include centerBox('align');
         justify-content: space-around;
-        align-items: center;
         font-family: mainFont;
         font-size: 0.9rem;
         margin-top: 30px;
 
         span {
-            color: $main-3-color;
+            color: $main3Color;
             margin-right: 120px;
         }
 
         ul {
             list-style-type: none;
-            color: darken($main-3-color, $amount: 20);
-            display: flex;
-            align-items: center;
+            color: $darken20Main3Color;
+            @include centerBox();
             width: 320px;
-            justify-content: center;
             padding-left: 0;
             flex-shrink: 0;
 
@@ -138,7 +131,7 @@
                 width: 15px;
                 height: 1px;
                 border: none;
-                background-color: darken($main-3-color, $amount: 20);
+                background-color: $darken20Main3Color;
                 transform: rotate(90deg);
             }
         }

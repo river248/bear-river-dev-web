@@ -2,10 +2,8 @@
 
 .checkout {
     &-container {
-        max-width: 1250px;
-        min-width: 960px;
-        padding: 0 40px 100px 40px;
-        margin: 0 auto;
+        @include container;
+        padding-bottom: 100px;
         display: flex;
     }
 
@@ -23,19 +21,19 @@
         hr {
             margin-top: 0;
             height: 1.5px;
-            background-color: $main-2-color;
+            background-color: $main2Color;
             border: 0;
         }
 
         &-form {
             padding-top: 40px;
-            border-top: 1px solid darken($main-3-color, $amount: 10);
+            border-top: 1px solid $darken10Main3Color;
 
             input {
                 width: 100%;
                 height: 45px;
                 padding-left: 20px;
-                border: 1px solid darken($main-3-color, $amount: 10);
+                border: 1px solid $darken10Main3Color;
                 outline: none;
 
                 &::placeholder {
@@ -61,7 +59,7 @@
                 height: 45px;
                 
                 select {
-                    border: 1px solid darken($main-3-color, $amount: 10);
+                    border: 1px solid $darken10Main3Color;
                     padding: 0 5px;
                     font-family: mainFont;
                 }
@@ -73,13 +71,13 @@
     &-right-container {
         max-width: calc(1/3*100%);
         flex-basis: calc(1/3*100%);
-        background-color: $main-4-color;
+        background-color: $main4Color;
         padding: 15px;
         font-family: mainFont;
 
         hr {
             height: 1px;
-            background-color: darken($main-3-color, $amount: 20);
+            background-color: $darken20Main3Color;
             margin: 20px 0;
             border: 0;
         }
@@ -104,20 +102,18 @@
         button {
             width: 100%;
             height: 45px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: $main-2-color;
+            @include centerBox();
+            background-color: $main2Color;
             outline: none;
             border: 0;
             cursor: pointer;
-            color: $main-3-color;
+            color: $main3Color;
             font-weight: bold;
 
             &:last-child {
-                background-color: $main-color;
+                background-color: $mainColor;
                 margin-top: 20px;
-                color: $main-3-color
+                color: $main3Color
             }
         }
     }

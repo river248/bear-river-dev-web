@@ -11,7 +11,7 @@ table {
             font-family: mainFont;
             text-transform: uppercase;
             padding-bottom: 25px;
-            border-bottom: 1px solid darken($main-3-color, $amount: 10);
+            border-bottom: 1px solid $darken10Main3Color;
 
             &:nth-child(2) { width: 22%; }
             &:nth-child(3) { width: 15%; }
@@ -20,20 +20,19 @@ table {
 
         td {
 
-            border-bottom: 1px solid darken($main-3-color, $amount: 10);
+            border-bottom: 1px solid $darken10Main3Color;
             padding: 20px 0;
             font-family: mainFont;
 
             .shopping-product-container {
-                display: flex;
-                align-items: center;
+                @include centerBox('align');
 
                 .shopping-product-image {
                     width: 90px;
                     height: 90px;
                     margin-right: 30px;
                     flex-shrink: 0;
-                    background-color: darken($main-3-color, $amount: 20);
+                    background-color: $darken20Main3Color;
 
                     img {
                         width: 100%;
@@ -79,7 +78,7 @@ table {
             }
 
             .cancle-product-btn {
-                background-color: darken($main-3-color, $amount: 10);
+                background-color: $darken10Main3Color;
                 width: 100%;
                 display: block;
                 position: relative;
