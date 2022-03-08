@@ -2,10 +2,7 @@
 
 .product-detail {
     &-container {
-        max-width: 1250px;
-        min-width: 960px;
-        padding: 0 40px;
-        margin: auto;
+        @include container;
         display: flex;
     }
 
@@ -15,7 +12,7 @@
         margin-left: 15px;
         margin-right: 15px;
         padding-top: calc(50% - 30px);
-        background-color: darken($main-3-color, $amount: 10);
+        background-color: $darken10Main3Color;
 
         img {
             width: 100%;
@@ -36,8 +33,8 @@
             display: inline-block;
             padding: 5px 10px;
             border-radius: 3px;
-            background-color: $main-2-color;
-            color: $main-3-color;
+            background-color: $main2Color;
+            color: $main3Color;
             font-size: 0.9rem;
         }
 
@@ -56,7 +53,7 @@
         hr {
             border: none;
             height: 1px;
-            background-color: darken($main-3-color, $amount: 20);
+            background-color: $darken20Main3Color;
             margin: 25px 0;
         }
 
@@ -73,10 +70,9 @@
 
         &-quantity {
 
-            border: 1px solid darken($main-3-color, $amount: 10);
+            border: 1px solid $darken10Main3Color;
             height: 100%;
-            display: flex;
-            align-items: center;
+            @include centerBox('align');
             margin-right: 20px;
             height: 49px;
 
@@ -84,7 +80,7 @@
                 display: unset;
                 padding: 10px 15px;
                 background-color: unset;
-                color: $main-2-color;
+                color: $main2Color;
                 font-weight: 600;
                 cursor: pointer;
             }
@@ -108,24 +104,22 @@
             margin-right: 20px;
             outline: none;
             border: none;
-            background-color: $main-color;
+            background-color: $mainColor;
             padding-top: 2px;
             font-weight: 600;
-            color: $main-3-color;
+            color: $main3Color;
             cursor: pointer;
             height: 49px;
         }
 
         &-love-btn {
-            background-color: $main-3-color !important;
+            background-color: $main3Color !important;
             width: 49px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid darken($main-3-color, $amount: 10) !important;
+            @include centerBox();
+            border: 1px solid $darken10Main3Color !important;
 
             svg {
-                color: $main-color;
+                color: $mainColor;
                 font-size: 1.8rem;
                 flex-shrink: 0;
             }
@@ -147,7 +141,7 @@
             content: '';
             display: block;
             height: 1px;
-            background-color: darken($main-3-color, $amount: 10);
+            background-color: $darken10Main3Color;
             width: calc(100% - 30px);
             margin: 0 auto;
         }

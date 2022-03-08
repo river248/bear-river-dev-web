@@ -6,13 +6,11 @@
     left: 0;
     width: 100%;
     z-index: 50;
-    background-color: $main-color;
+    background-color: $mainColor;
 
     ul {
         list-style-type: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include centerBox();
         height: 62px;
         margin: 0 auto;
         padding-left: 0;
@@ -22,19 +20,17 @@
 
         li {
             a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                @include centerBox();
                 height: 62px;
                 width: 100px;
                 text-decoration: none;
                 font-family: mainFont;
                 font-weight: 600;
-                color: $main-3-color;
+                color: $main3Color;
             }
 
             &:hover a {
-                color: $main-2-color;
+                color: $main2Color;
             }
 
             &:nth-child(1).active ~ .current-link {
@@ -61,7 +57,7 @@
         .current-link {
             width: 100px;
             height: 5px;
-            background-color: $main-2-color;
+            background-color: $main2Color;
             position: absolute;
             bottom: 0;
             left: 0;

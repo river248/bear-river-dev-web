@@ -2,10 +2,8 @@
 
 .introduce-video-container {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $main-4-color;
+    @include centerBox();
+    background-color: $main4Color;
     padding: 20px 15px;
 
     .image-video-container {
@@ -26,16 +24,14 @@
             border-radius: 50%;
             outline: none;
             border: none;
-            background-color: $main-color;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: $mainColor;
+            @include centerBox();
             cursor: pointer;
 
             svg {
                 font-size: 3rem;
                 margin-left: 7px;
-                color: $main-3-color;
+                color: $main3Color;
             }
         }
     }

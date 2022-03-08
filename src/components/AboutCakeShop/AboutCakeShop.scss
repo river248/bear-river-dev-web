@@ -2,8 +2,7 @@
 
 .about-cake-shop {
     padding: 100px 40px;
-    display: flex;
-    justify-content: center;
+    @include centerBox('justify');
 
     .about-cake-shop-left {
         padding: 0 15px;
@@ -11,7 +10,7 @@
 
         h3 {
             font-family: mainFont;
-            color: $main-color;
+            color: $mainColor;
             letter-spacing: 6px;
             margin-top: 0;
             font-weight: bold;
@@ -50,12 +49,12 @@
             .cake-skill-progress-track {
                 width: 100%;
                 height: 8px;
-                background-color: darken($main-3-color, $amount: 20);
+                background-color: $darken20Main3Color;
                 margin-bottom: 40px;
 
                 .cake-skill-progress {
                     height: 100%;
-                    background-color: $main-2-color;
+                    background-color: $main2Color;
                     display: block;
                 }
             }

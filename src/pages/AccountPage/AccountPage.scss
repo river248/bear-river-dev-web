@@ -5,9 +5,7 @@
     &-wrapper {
         width: 100%;
         height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include centerBox();
         position: relative;
 
         img {
@@ -16,7 +14,7 @@
             width: calc(100% - 60px);
             height: calc(100% - 60px);
             object-fit: cover;
-            box-shadow: 0 6px 14px rgba($main-2-color, $alpha: 0.6);
+            box-shadow: 0 6px 14px rgba($main2Color, $alpha: 0.6);
             border-radius: 10px;
         }
 
@@ -36,8 +34,8 @@
         z-index: 1;
         width: 310px;
         border-radius: 8px;
-        background-color: $main-3-color;
-        box-shadow: 0 0 8px rgba($main-2-color, $alpha: 0.2);
+        background-color: $main3Color;
+        box-shadow: 0 0 8px rgba($main2Color, $alpha: 0.2);
         padding: 30px 30px 60px 30px;
         font-family: mainFont;
         position: relative;
@@ -55,12 +53,12 @@
                 outline: none;
                 border: none;
                 margin-bottom: 20px;
-                box-shadow: 0 6px 12px rgba($main-2-color, $alpha: 0.2);
+                box-shadow: 0 6px 12px rgba($main2Color, $alpha: 0.2);
                 padding-left: 20px;
                 font-weight: 600;
 
                 &::placeholder {
-                    color: $main-2-color;
+                    color: $main2Color;
                 }
             }
 
@@ -70,11 +68,11 @@
                 border-radius: 18px;
                 border: none;
                 outline: none;
-                background-color: $main-color;
+                background-color: $mainColor;
                 margin: 0 auto;
                 font-weight: 600;
-                color: $main-3-color;
-                box-shadow: 0 4px 12px rgba($main-color, $alpha: 0.7);
+                color: $main3Color;
+                box-shadow: 0 4px 12px rgba($mainColor, $alpha: 0.7);
                 cursor: pointer;
             }
         }
@@ -92,7 +90,7 @@
             left: 50%;
             transform: translateX(-50%);
             text-decoration: none;
-            color: $main-2-color;
+            color: $main2Color;
             font-size: 0.9rem;
 
             &:hover {

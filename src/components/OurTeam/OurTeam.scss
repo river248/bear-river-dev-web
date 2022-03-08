@@ -4,17 +4,14 @@
     padding: 100px 0 70px 0;
 
     .our-team-container {
-        max-width: 1200px;
-        min-width: 960px;
-        padding: 0 40px;
-        margin: auto;
+        @include container;
 
         .title-our-team {
             padding: 0 15px;
             
             h3 {
                 font-family: mainFont;
-                color: $main-color;
+                color: $mainColor;
                 letter-spacing: 3px;
                 font-size: 1.3rem;
                 margin-top: 0;
@@ -52,9 +49,8 @@
                     }
     
                     .our-team-info {
-                        display: flex;
+                        @include centerBox('align');
                         flex-direction: column;
-                        align-items: center;
                         padding: 30px 0 20px 0;
                         font-family: mainFont;
                         position: absolute;
@@ -62,7 +58,7 @@
                         transition: all 0.3s ease-in-out;
                         left: 15px;
                         width: calc(100% - 30px);
-                        background-color: rgba($main-3-color, $alpha: 0.8);
+                        background-color: rgba($main3Color, $alpha: 0.8);
     
                         span {
                             line-height: 28px;
@@ -80,8 +76,7 @@
                     }
 
                     .social-contact-info {
-                        display: flex;
-                        justify-content: center;
+                        @include centerBox('justify');
 
                         div {
                             padding: 10px;
