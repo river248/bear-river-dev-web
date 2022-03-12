@@ -1,10 +1,11 @@
 import {
     GET_CATEGORY_CAKES,
     GET_DETAILED_CAKE,
-    GET_CAKES
+    GET_CAKES,
+    SEARCH_CAKE
 } from 'utils/constants'
 
-import { fetchCakes, fetchCategoryCakes, fetchDetailedCake } from './ApiCall/cakeAPI'
+import { fetchCakes, fetchCategoryCakes, fetchDetailedCake, fetchSearchCakes } from './ApiCall/cakeAPI'
 import { actLoading } from './globalState'
 
 export const actFetchCakes = (sortBy, value, page) => {
@@ -53,5 +54,20 @@ export const getDetailedCake = (data) => {
     return {
         type: GET_DETAILED_CAKE,
         payload: data
+    }
+}
+
+export const actSearch = (key, page) => {
+    return (dispatch) => {
+        return fetchSearchCakes(key, page).then(res => {
+            dispatch(searchCakes(res.data))
+        })
+    }
+}
+
+export const searchCakes = ({cakes, quantityPage}) => {
+    return {
+        type: SEARCH_CAKE,
+        payload: {cakes, quantityPage}
     }
 }

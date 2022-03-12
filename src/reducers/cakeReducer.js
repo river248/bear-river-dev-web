@@ -1,4 +1,4 @@
-import { GET_CAKES, GET_CATEGORY_CAKES, GET_DETAILED_CAKE } from 'utils/constants'
+import { GET_CAKES, GET_CATEGORY_CAKES, GET_DETAILED_CAKE, SEARCH_CAKE } from 'utils/constants'
 
 const initialState = {
     cakes: [],
@@ -30,6 +30,12 @@ const cakeReducer = (state = initialState, action) => {
             return {
                 ...state,
                 cake: {...action.payload}
+            }
+        case SEARCH_CAKE:
+            return {
+                ...state,
+                cakes: [...action.payload.cakes],
+                quantityPages: action.payload.quantityPages
             }
         default:
             return {...state}
