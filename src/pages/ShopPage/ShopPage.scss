@@ -5,110 +5,6 @@
     display: flex;
     justify-content: space-between;
 
-    .filter-container {
-        flex-basis: calc(7/12*100%);
-        max-width: calc(7/12*100%);
-        padding: 0 15px;
-        height: 44px;
-
-        form {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            font-family: mainFont;
-            border: 1px solid $darken20Main3Color;
-            position: relative;
-
-            svg {
-                position: absolute;
-                font-size: 1.5rem;
-                right: 10px;
-                top: 50%;
-                transform: translateY(-50%);
-                cursor: pointer;
-            }
-
-            .current-category {
-
-                width: 25%;
-                height: 100%;
-                @include centerBox();
-                position: relative;
-                cursor: pointer;
-
-                span {
-                    width: 100%;
-                    padding: 10px 15px 10px 20px;
-                }
-
-                svg {
-                    top: 10px;
-                    transform: translateY(0%);
-                    right: 5px;
-                }
-
-                &::after {
-                    content: '';
-                    width: 1px;
-                    height: 20px;
-                    right: 0;
-                    background-color: $darken20Main3Color;
-                    position: absolute;
-                }
-            }
-
-            input {
-                width: 75%;
-                padding-left: 30px;
-                outline: none;
-                font-family: mainFont;
-                font-size: 1rem;
-                border: none;
-
-                &::placeholder {
-                    font-family: mainFont;
-                    color: $main2Color;
-                }
-            }
-        }
-    }
-
-    .sorting-container {
-        flex-basis: calc(5/12*100%);
-        max-width: calc(5/12*100%);
-        padding: 0 15px;
-        height: 44px;
-
-        .current-option-sorting {
-            height: 100%;
-            width: 205px;
-            background-color: $darken10Main3Color;
-            float: right;
-            font-family: mainFont;
-            cursor: pointer;
-            position: relative;
-
-            span {
-                width: 100%;
-                height: 100%;
-                @include centerBox();
-                padding-right: 10px;
-            }
-
-            ul {
-                left: 0;
-                top: 44px;
-            }
-
-            svg {
-                position: absolute;
-                font-size: 1.5rem;
-                right: 10px;
-                top: 10px;
-            }
-        }
-    }
-
     .dropdown-list {
         position: absolute;
         border: 1px solid $darken20Main3Color;
@@ -145,11 +41,6 @@
     .filter-and-sort-container {
         max-width: 720px;
         min-width: 540px;
-
-        .filter-container form {
-            .current-category { width: 40%; }
-            input { width: 60%; }
-        }
     }
     .products-container {
         max-width: 720px;
@@ -162,21 +53,6 @@
         flex-direction: column;
         justify-content: unset;
         align-items: center;
-
-        .filter-container, .sorting-container {
-            width: 100%;
-            flex-basis: unset;
-            max-width: unset;
-        }
-
-        .sorting-container {
-            height: unset;
-            .current-option-sorting {
-                float: unset;
-                margin: 30px auto 0 auto;
-                height: 44px;
-            }
-        }
     }
 }
 
@@ -192,19 +68,5 @@
         width: 100%;
         min-width: unset;
         padding: 0;
-    }
-}
-
-@media screen and (max-width: 480px) {
-
-    .filter-and-sort-container .filter-container form {
-        .current-category {
-            width: 46%;
-            padding-right: 0;
-        }
-        input {
-            width: 54%;
-            padding-left: 15px;
-        }
     }
 }

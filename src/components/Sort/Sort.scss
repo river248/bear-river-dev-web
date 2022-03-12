@@ -1,0 +1,48 @@
+@import '_setting.scss';
+
+.sorting-container {
+    flex-basis: calc(5/12*100%);
+    max-width: calc(5/12*100%);
+    padding: 0 15px;
+    height: 44px;
+
+    .current-option-sorting {
+        height: 100%;
+        width: 205px;
+        background-color: $darken10Main3Color;
+        float: right;
+        font-family: mainFont;
+        cursor: pointer;
+        position: relative;
+
+        span {
+            width: 100%;
+            height: 100%;
+            @include centerBox();
+            padding-right: 10px;
+        }
+
+        ul {
+            left: 0;
+            top: 44px;
+        }
+
+        svg {
+            position: absolute;
+            font-size: 1.5rem;
+            right: 10px;
+            top: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sorting-container {
+        height: unset;
+        .current-option-sorting {
+            float: unset;
+            margin: 30px auto 0 auto;
+            height: 44px;
+        }
+    }
+}

@@ -1,0 +1,106 @@
+@import '_setting.scss';
+
+.filter-container {
+    flex-basis: calc(7/12*100%);
+    max-width: calc(7/12*100%);
+    padding: 0 15px;
+    height: 44px;
+
+    form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        font-family: mainFont;
+        border: 1px solid $darken20Main3Color;
+        position: relative;
+
+        svg {
+            position: absolute;
+            font-size: 1.5rem;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .current-category {
+
+            width: 25%;
+            height: 100%;
+            @include centerBox();
+            position: relative;
+            cursor: pointer;
+
+            span {
+                width: 100%;
+                padding: 10px 15px 10px 20px;
+            }
+
+            svg {
+                top: 10px;
+                transform: translateY(0%);
+                right: 5px;
+            }
+
+            &::after {
+                content: '';
+                width: 1px;
+                height: 20px;
+                right: 0;
+                background-color: $darken20Main3Color;
+                position: absolute;
+            }
+        }
+
+        .search-bar {
+
+            width: 75%;
+            padding-left: 30px;
+
+            input {
+                width: 100%;
+                height: 100%;
+                outline: none;
+                font-family: mainFont;
+                font-size: 1rem;
+                border: 0;
+                padding-right: 35px;
+
+                &::placeholder {
+                    font-family: mainFont;
+                    color: $main2Color;
+                }
+            }
+            
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .filter-container form {
+        .current-category { width: 40%; }
+        input { width: 60%; }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .filter-container, .sorting-container {
+        width: 100%;
+        flex-basis: unset;
+        max-width: unset;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .filter-container form {
+        .current-category {
+            width: 46%;
+            padding-right: 0;
+        }
+        input {
+            width: 54%;
+            padding-left: 15px;
+        }
+    }
+}
