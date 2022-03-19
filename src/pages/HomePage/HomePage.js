@@ -17,7 +17,7 @@ import { actFetchAllCategories } from 'actions/categoryAction'
 import ImageURL from 'components/ImageURL/ImageURL'
 import { actFetchCakes } from 'actions/cakeAction'
 import { fake8Products } from 'utils/fakeProduct'
-import LoadingCard from 'components/LoadingCard/LoadingCard'
+import LoadingCard from 'components/Loading/LoadingCard'
 
 function HomePage(props) {
 
