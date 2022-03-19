@@ -1,4 +1,5 @@
-import { initializeApp } from 'firebase/app'
+import firebase from 'firebase/compat/app'
+import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCWwgs87BBr__Khxv6rK3e_SQJQ1y4KAvs',
@@ -11,6 +12,10 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-const firebaseApp = () => initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig)
+const storage = getStorage()
 
-export default firebaseApp
+export {
+  storage,
+  firebase as default
+}

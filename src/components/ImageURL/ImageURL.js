@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import { getStorage, ref, getDownloadURL } from 'firebase/storage'
+import { ref, getDownloadURL } from 'firebase/storage'
 
 import './ImageURL.scss'
+import { storage } from 'config/firebaseConfig'
 
 function ImageURL({ source, alert }) {
 
@@ -10,7 +11,6 @@ function ImageURL({ source, alert }) {
 
     useEffect(() => {
         let isSubcribe = true
-        const storage = getStorage()
 
         if(source)
             getDownloadURL(ref(storage, `${source}`))

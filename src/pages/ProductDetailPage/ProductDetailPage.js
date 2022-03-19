@@ -11,7 +11,7 @@ import { actFetchCategoryCakes, actFetchDetailedCake } from 'actions/cakeAction'
 import ImageURL from 'components/ImageURL/ImageURL'
 import { formatPrice } from 'utils/formatPrice'
 import { fake8Products } from 'utils/fakeProduct'
-import LoadingCard from 'components/LoadingCard/LoadingCard'
+import LoadingCard from 'components/Loading/LoadingCard'
 
 function ProductDetailPage(props) {
 
