@@ -1,5 +1,4 @@
-// export const API_ROOT = 'http://localhost:8080'
-export const API_ROOT = 'https://cake-riverdev-web.herokuapp.com'
+export const API_ROOT = process.env.NODE_ENV ? 'https://cake-riverdev-web.herokuapp.com' : 'http://localhost:8080'
 
 export const IS_SHOW = 'IS_SHOW'
 export const MESSAGE = 'MESSAGE'
