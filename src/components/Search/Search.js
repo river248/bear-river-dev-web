@@ -39,12 +39,13 @@ function Search(props) {
 
 
     useEffect(() => {
-        const timmer = setTimeout(() => {
-            searchCake(key, 1)
-        }, 300)
+        let timmer = null
+        if (key)
+            timmer = setTimeout(() => {
+                searchCake(key, 1)
+            }, 300)
 
         return () => clearTimeout(timmer)
-        
     }, [key])
 
   return (
