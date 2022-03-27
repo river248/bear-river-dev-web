@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { FiSearch, FiShoppingBag } from 'react-icons/fi'
+import { FaSignOutAlt } from 'react-icons/fa'
 import { BsHeart } from 'react-icons/bs'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
@@ -7,15 +9,24 @@ import { connect } from 'react-redux'
 
 import './Header.scss'
 import logo from 'resouces/assests/header-logo.png'
+import client from 'resouces/assests/client.jpg'
 import { formatPrice } from 'utils/formatPrice'
+import { actGetUserInfo, actLogOut } from 'actions/userAction'
+import { getToken, removeUserSession } from 'components/Auth/Auth'
 
-function Header({ isVisible, shoppingCart }) {
+function Header(props) {
+
+    const {
+        isVisible, shoppingCart, user,
+        getUserInfor, logout
+    } = props
 
     const location = useLocation()
     const navigate = useNavigate()
     const [isShow, setIsShow] = useState(false)
     const menuRef = useRef(null)
     const headerRef = useRef()
+    const token = getToken()
 
     const toggleMenu = () => {
         if (isShow) {
@@ -37,13 +48,30 @@ function Header({ isVisible, shoppingCart }) {
             headerRef.current.style.setProperty('left', '-300px')
     }, [isVisible])
 
+    useLayoutEffect(() => {
+        if (token)
+            getUserInfor(token)
+    }, [token])
+
+    const handleLogout = () => {
+        logout()
+        removeUserSession()
+    }
+
     return (
         <div className='header-container' ref = {headerRef}>
-            <div className='left-header header-item'>
+            {!user._id ? <div className='left-header header-item'>
                 <Link to={'/account/sign-up'}>Sign up</Link>
                 <hr/>
                 <Link to={'/account/sign-in'}>Sign in</Link>
-            </div>
+            </div> : <div className='header-user header-item'>
+                <FaSignOutAlt onClick={handleLogout}/>
+                <hr/>
+                <div className='header-user-avatar' onClick={() => navigate(`user/info`)}>
+                    <img src={client} alt="user's avatar"/>
+                </div>
+                <span className='header-user-name'>Riverrrrrrrrrrrrrrrrrrrrrrr</span>
+            </div>}
             <Link to={'/home'}>
                 <img src={logo} alt='logo' className='header-item'/>
             </Link>
@@ -76,8 +104,7 @@ function Header({ isVisible, shoppingCart }) {
             <div className='right-header header-item'>
                 <div className='right-header-links'>
                     <FiSearch/>
-                    <hr/>
-                    <BsHeart/>
+                    {user._id && <><hr/><BsHeart/></>}
                 </div>
                 <div className='right-header-cart'>
                     <FiShoppingBag onClick={() => navigate('shopping-cart')}/>
@@ -92,8 +119,19 @@ function Header({ isVisible, shoppingCart }) {
 const mapStateToProps = (state) => {
     return {
         isVisible: state.globalState.isVisible,
-        shoppingCart: state.cartReducer
+        shoppingCart: state.cartReducer,
+        user: state.userReducer.user
     }
 }
 
-export default connect(mapStateToProps, null)(Header)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getUserInfor : (token) => {
+            dispatch(actGetUserInfo(token))
+        },
+        logout : () => {
+            dispatch(actLogOut())
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

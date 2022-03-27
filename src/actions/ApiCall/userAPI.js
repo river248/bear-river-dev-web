@@ -18,4 +18,11 @@ export const signInWithSocial = async (social, data) => {
     return request.data
 }
 
-export const logout = async () => await axios.get(`${API_ROOT}/v1/user/logout`)
+export const logout = async () => {
+    const request = await axios.get(`${API_ROOT}/v1/user/logout`)
+    return request.data
+}
+
+export const fetchUserInfo = async (token) => await axios.get(`${API_ROOT}/v1/user`, {
+    headers: {'x-access-token': token}
+})
