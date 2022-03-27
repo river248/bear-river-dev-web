@@ -6,30 +6,93 @@ import { useNavigate } from 'react-router-dom'
 import { formatPrice } from 'utils/formatPrice'
 import { getCommune, getDistrict, getListCommunes, getListDistricts, getProvince } from 'utils/getProvinceData'
 import { communes, districts, provinces } from 'utils/provinceData'
+import { validateEmail } from 'utils/validate'
 
 import './CheckoutPage.scss'
 
-export const CheckoutPage = ({ shoppingCart }) => {
+export const CheckoutPage = ({ shoppingCart, user }) => {
 
     const [currentProvince, setCurrentProvince] = useState('00')
     const [currentDistrict, setCurrentDistrict] = useState('000')
     const [currentCommune, setCurrentCommune] = useState('00000')
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [address, setAddress] = useState('')
+
+    const [errorEmail, setErrorEmail] = useState('')
+    const [errorPhone, setErrorPhone] = useState('')
+    const [errorAddress, setErrorAddress] = useState('')
+    const [errorName, setErrorName] = useState('')
 
     const navigate = useNavigate()
 
+    const handleSubmitForm = e => e.preventDefault()
+
+    const handleBlur = (type) => {
+        switch (type) {
+            case 1:
+                if (!email)
+                    setErrorEmail('Please fill in this field!')
+                else
+                    if (!validateEmail(email))
+                        setErrorEmail('Invalid email!')
+                    else setErrorEmail('')
+                break
+            case 2:
+                if (!phone)
+                    setErrorPhone('Please fill in this field!')
+                else
+                    if (phone.length < 10 || phone.length > 11 )
+                        setErrorPhone('Phone must be at least 10 numbers!')
+                    else setErrorPhone('')
+                break
+            case 3:
+                if (!address)
+                    setErrorAddress('Please fill in this field!')
+                else setErrorAddress('')
+                break
+            case 4:
+                if (!name)
+                    setErrorName('Please fill in this field!')
+                else
+                    if (name.length < 5)
+                        setErrorName('Password must be at least 5 characters!')
+                    else
+                        setErrorName('')
+                break
+            default:
+                break
+        }
+    }
+    
     const handlePlaceOrder = () => {
 
         const province = getProvince(provinces, currentProvince)
         const district = getDistrict(districts, currentDistrict)
         const commune = getCommune(communes, districts, currentCommune)
-
-        if (currentCommune === '00000' || currentDistrict === '000')
-            console.log('error')
-        else
+        let data = {}
+        if (currentCommune === '00000' || currentDistrict === '000' || !name || !email || !phone || !address) {
+            if (!email) setErrorEmail('Please fill in this field!')
+            if (!phone) setErrorPhone('Please fill in this field!')
+            if (!name) setErrorName('Please fill in this field!')
+            if (!address) setErrorAddress('Please fill in this field!')
+        }
+        else {
             if (commune._id === district._id)
-                console.log(province, district)
+                data = {
+                    address: district.name + ', ' + province.name
+                }
             else
-                console.log(province, district, commune)
+                data = {
+                    address: commune.name + ', ' + district.name + ', ' + province.name
+                }
+            data = {
+                ...data,
+                content: name + '\n' + email + '\n' + phone + '\n' + address 
+            }
+            console.log(data)
+        }
     }
     
   return (
@@ -39,13 +102,50 @@ export const CheckoutPage = ({ shoppingCart }) => {
         <div className='checkout-left-container'>
             <hr/>
             <h4>BILLING DETAILS</h4>
-            <form className='checkout-left-container-form'>
-                <input placeholder='Your name'/>
-                <div className='checkout-left-container-form-input'>
-                    <input placeholder='Email' type={'email'}/>
-                    <input placeholder='Phone number'/>
+            <form className='checkout-left-container-form' onSubmit={handleSubmitForm}>
+                <div className='checkout-left-container-form-group'>
+                    <input
+                        placeholder='Your name'
+                        value={user._id ? user.name : name}
+                        onChange={(e) => setName(e.target.value)}
+                        onBlur={() => handleBlur(4)}
+                        onFocus={() => setErrorName('')}
+                    />
+                    <span className='checkout-left-container-form-message'>{errorName}</span>
                 </div>
-                <input placeholder='Address'/>
+                <div className='checkout-left-container-form-input'>
+                    <div className='checkout-left-container-form-group'>
+                        <input
+                            placeholder='Email'
+                            type={'email'}
+                            value={user._id ? user.name : email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            onBlur={() => handleBlur(1)}
+                            onFocus={() => setErrorEmail('')}
+                        />
+                        <span className='checkout-left-container-form-message'>{errorEmail}</span>
+                    </div>
+                    <div className='checkout-left-container-form-group'>
+                        <input
+                            placeholder='Phone number'
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            onBlur={() => handleBlur(2)}
+                            onFocus={() => setErrorPhone('')}
+                        />
+                        <span className='checkout-left-container-form-message'>{errorPhone}</span>
+                    </div>
+                </div>
+                <div className='checkout-left-container-form-group'>
+                    <input
+                        placeholder='Address'
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        onBlur={() => handleBlur(3)}
+                        onFocus={() => setErrorAddress('')}
+                    />
+                    <span className='checkout-left-container-form-message'>{errorAddress}</span>
+                </div>
                 <div className='checkout-left-container-form-address'>
                     <select name='province' onChange={(e) => { setCurrentProvince(e.target.value); setCurrentDistrict('000')}}>
                         { provinces.map(province => (<option key={province._id} value={province._id}>{province.name}</option>))}
@@ -89,7 +189,8 @@ export const CheckoutPage = ({ shoppingCart }) => {
 
 const mapStateToProps = (state) => {
     return {
-        shoppingCart: state.cartReducer
+        shoppingCart: state.cartReducer,
+        user: state.userReducer.user
     }
 }
 

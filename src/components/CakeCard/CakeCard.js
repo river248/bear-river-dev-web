@@ -2,6 +2,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { BsHeart } from 'react-icons/bs'
 
 import './CakeCard.scss'
 import ImageURL from 'components/ImageURL/ImageURL'
@@ -9,7 +10,7 @@ import { formatPrice } from 'utils/formatPrice'
 import { addToCart } from 'actions/cartAction'
 import { actMessage } from 'actions/globalState'
 
-function CakeCard({ cakeItem, addToCart, showMessage }) {
+function CakeCard({ cakeItem, addToCart, showMessage, user }) {
 
     const navigate = useNavigate()
 
@@ -23,6 +24,7 @@ function CakeCard({ cakeItem, addToCart, showMessage }) {
             <div className='cake-image-container'>
                 <ImageURL source={cakeItem.thumbnail} alert={cakeItem.name}/>
                 <span className='cake-type'>{cakeItem.categoryName}</span>
+                {user._id && <BsHeart/>}
             </div>
             <div className='product-info'>
                 <span className='cake-name' onClick={() => navigate(`/shop/product?id=${cakeItem._id}&&category=${cakeItem.categoryID}`)}>{cakeItem.name}</span>
@@ -31,6 +33,12 @@ function CakeCard({ cakeItem, addToCart, showMessage }) {
             </div>
         </div>
     )
+}
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.userReducer.user
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -44,4 +52,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(React.memo(CakeCard))
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(CakeCard))

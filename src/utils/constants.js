@@ -14,3 +14,5 @@ export const SEARCH_CAKE = 'SEARCH_CAKE'
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const UPDATE_CART = 'UPDATE_CART'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+
+export const GET_USER = 'GET_USER'

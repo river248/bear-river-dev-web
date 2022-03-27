@@ -3013,7 +3013,7 @@ export const districts = [
     },
     {
      provinceId: "79",
-     name: "Quận Thủ Đức",
+     name: "Thành phố Thủ Đức",
      _id: "762"
     },
     {

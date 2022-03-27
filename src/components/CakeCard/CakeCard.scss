@@ -33,6 +33,16 @@
             transform: translate(-50%, -50%);
             transition: all .3s ease-in-out;
         }
+
+        svg {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 25px;
+            cursor: pointer;
+
+            &:hover { color: $mainColor; }
+        }
     }
 
     .product-info {
