@@ -2,7 +2,7 @@ import axios from 'axios'
 import { getToken, removeUserSession, setUserSession } from 'components/Auth/Auth'
 
 const instance = axios.create({
-    baseURL: process.env.NODE_ENV === 'production' ?  'https://comic-riverdev-web.herokuapp.com/' : 'http://localhost:8080/'
+    baseURL: process.env.NODE_ENV === 'production' ?  'https://cake-riverdev-web.herokuapp.com/' : 'http://localhost:8080/'
   })
 
 instance.interceptors.request.use(
